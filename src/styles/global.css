@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+* {
+  outline: 1px solid #ccc;
+}
+
+.services-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 6fr));
+}

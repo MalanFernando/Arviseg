@@ -1,0 +1,41 @@
+---
+import Integridad from '../icons/values/integrity.svg';
+import Disciplina from '../icons/values/discipline.svg';
+import Transparencia from '../icons/values/transparence.svg';
+import Lealtad from '../icons/values/loyalty.svg';
+import Excelencia from '../icons/values/excellence.svg';
+import Perseverancia from '../icons/values/perseverance.svg';
+import home from '../data/home.json';
+
+const icons = {
+  integrity: Integridad,
+  discipline: Disciplina,
+  transparency: Transparencia,
+  loyalty: Lealtad,
+  excellence: Excelencia,
+  perseverance: Perseverancia
+};
+
+type IconName = keyof typeof icons;
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+---
+
+<div class="flex flex-wrap justify-center gap-12">
+  {
+    home.values.list.map((value: { title: string; icon: string }) => {
+      const ValueIcon = icons[value.icon as IconName];
+      return (
+        <div class="grid gap-4 justify-items-center">
+          <div class="w-15">
+            {ValueIcon && <ValueIcon class={value.title} />}
+          </div>
+          <h4 class="text-lg font-semibold">{value.title}</h4>
+        </div>
+      );
+    })
+  }
+</div>

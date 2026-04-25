@@ -1,0 +1,19 @@
+---
+const { form } = Astro.props;
+---
+
+<section id="contact" class="p-8 max-w-xl mx-auto">
+  <h2 class="text-2xl font-bold">{form.title}</h2>
+  <p class="mb-4">{form.description}</p>
+
+  <form class="flex flex-col gap-4">
+    {form.fields.map(field => (
+      field.type === "textarea" ? (
+        <textarea name={field.name} placeholder={field.label} class="border p-2"></textarea>
+      ) : (
+        <input name={field.name} type={field.type} placeholder={field.label} class="border p-2" />
+      )
+    ))}
+    <button class="bg-black text-white p-2">{form.button}</button>
+  </form>
+</section>

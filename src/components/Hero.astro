@@ -1,0 +1,14 @@
+---
+import ButtonToAction from './ButtonToAction.astro';
+
+// components/Hero.astro
+const { hero } = Astro.props;
+---
+
+<section class="px-12 py-16">
+  <h1 class="text-7xl font-bold uppercase">{hero.name}</h1>
+  <h3 class="max-w-[360px] text-4xl font-bold">{hero.title}</h3>
+  <p class="text-xl mt-2">{hero.subtitle}</p>
+  <p class="mt-4">{hero.description}</p>
+  <ButtonToAction />
+</section>

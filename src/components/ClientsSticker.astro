@@ -1,0 +1,38 @@
+---
+import Dacar from '../assets/logos/logo-dacar.png';
+import Belcorp from '../assets/logos/logo-belcorp.png';
+import Latienda from '../assets/logos/logo-la-tienda.jpg';
+import LaUnion from '../assets/logos/logo-la-union.png';
+import Medu from '../assets/logos/logo-medu.png';
+import Novocorp from '../assets/logos/logo-novocorpo.png';
+import Pinturas from '../assets/logos/logo-pinturas-america.png';
+import Santillana from '../assets/logos/logo-santillana.png';
+import Transportes from '../assets/logos/logo-transporte.png';
+import Hispa from '../assets/logos/logo-hispa.png';
+
+const images = {
+  dacar: Dacar,
+  belcorp: Belcorp,
+  latienda: Latienda,
+  launion: LaUnion,
+  medu: Medu,
+  novocorp: Novocorp,
+  pinturas: Pinturas,
+  santillana: Santillana,
+  transportes: Transportes,
+  hispa: Hispa
+};
+
+type ImageName = keyof typeof images;
+
+interface Props {
+  name: ImageName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props as Props;
+
+const image = images[name];
+---
+
+{image && <img src={image.src} alt={name} class={className} loading="lazy" />}

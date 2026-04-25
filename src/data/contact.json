@@ -1,0 +1,18 @@
+{
+  "info": {
+    "address": "Av. Reina Victoria N13-95 y Colón, Quito",
+    "phones": ["0958996745", "0999814642"],
+    "emails": ["gestion@anvi-arviseg.com", "asistente@anvi-arviseg.com"]
+  },
+  "form": {
+    "title": "Solicita una asesoría",
+    "description": "Completa el formulario y te contactaremos.",
+    "fields": [
+      { "name": "name", "type": "text", "label": "Nombre" },
+      { "name": "phone", "type": "tel", "label": "Teléfono" },
+      { "name": "email", "type": "email", "label": "Correo" },
+      { "name": "message", "type": "textarea", "label": "Mensaje" }
+    ],
+    "button": "Enviar"
+  }
+}

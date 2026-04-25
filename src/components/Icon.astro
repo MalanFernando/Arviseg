@@ -1,0 +1,30 @@
+---
+import Shield from '../icons/services/shield.svg';
+import Monitor from '../icons/services/monitor.svg';
+import Vip from '../icons/services/vip.svg';
+import Camera from '../icons/services/camera.svg';
+import Fence from '../icons/services/fence.svg';
+import Values from '../icons/services/values.svg';
+
+const icons = {
+  shield: Shield,
+  monitor: Monitor,
+  vip: Vip,
+  camera: Camera,
+  fence: Fence,
+  values: Values
+};
+
+type IconName = keyof typeof icons;
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props as Props;
+
+const IconComponent = icons[name];
+---
+
+{IconComponent && <IconComponent class={className} />}

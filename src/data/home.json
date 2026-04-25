@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "name": "Arviseg",
+    "title": "Seguridad Privada y Monitoreo Electrónico",
+    "subtitle": "Tu seguridad en nuestras manos",
+    "description": "Servicio de vigilancia privada uniformada las 24 horas, los 365 días del año.",
+    "cta": {
+      "text": "Solicitar Cotización",
+      "link": "#contact"
+    }
+  },
+  "clients": [
+    "dacar",
+    "belcorp",
+    "latienda",
+    "launion",
+    "medu",
+    "novocorp",
+    "pinturas",
+    "santillana",
+    "transportes",
+    "hispa"
+  ],
+  "about": {
+    "title": "Quiénes Somos",
+    "description": "Somos una empresa especializada en seguridad integral, enfocada en proteger instalaciones, bienes y personas mediante soluciones confiables y personal altamente capacitado. Brindamos un servicio personalizado y eficiente."
+  },
+  "mission": {
+    "title": "Misión",
+    "description": "Generar confianza mediante una atención personalizada, garantizando la seguridad de nuestros clientes y sus bienes."
+  },
+  "vision": {
+    "title": "Visión",
+    "description": "Ser referentes nacionales en seguridad privada en Ecuador, destacando por calidad, confiabilidad y crecimiento sostenido."
+  },
+  "experience": {
+    "label": "Nuestras operaciones cubren la mayor parte del Territorio Nacional con",
+    "years": "+22 años de experiencia"
+  },
+  "values": {
+    "title": "Valores Institucionales",
+    "list": [
+      {
+        "title": "Integridad",
+        "icon": "integrity"
+      },
+      {
+        "title": "Disciplina",
+        "icon": "discipline"
+      },
+      {
+        "title": "Transparencia",
+        "icon": "transparency"
+      },
+      {
+        "title": "Lealtad",
+        "icon": "loyalty"
+      },
+      {
+        "title": "Excelencia",
+        "icon": "excellence"
+      },
+      {
+        "title": "Perseverancia",
+        "icon": "perseverance"
+      }
+    ]
+  }
+}

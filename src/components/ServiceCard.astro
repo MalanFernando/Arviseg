@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+const { service } = Astro.props;
+---
+
+<div class="p-6 hover:shadow-md transition">
+  <Icon name={service.icon} />
+  <h3 class="text-lg font-semibold mt-3">{service.title}</h3>
+  <p class="text-sm mt-2">{service.description}</p>
+</div>

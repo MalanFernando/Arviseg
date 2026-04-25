@@ -1,0 +1,46 @@
+{
+  "intro": {
+    "title": "Nuestros Servicios",
+    "description": "Hacemos que la seguridad de su negocio, hogar o bienestar personal sea verdaderamente efectiva."
+  },
+  "list": [
+    {
+      "title": "Seguridad Privada",
+      "icon": "shield",
+      "description": "Servicio de vigilancia profesional para proteger instalaciones, bienes y personas."
+    },
+    {
+      "title": "Monitoreo Electrónico",
+      "icon": "monitor",
+      "description": "Supervisión continua con respuesta inmediata ante eventos."
+    },
+    {
+      "title": "Seguridad VIP",
+      "icon": "vip",
+      "description": "Protección personalizada para personas con altos requerimientos."
+    },
+    {
+      "title": "Monitoreo CCTV",
+      "icon": "camera",
+      "description": "Control mediante cámaras en tiempo real."
+    },
+    {
+      "title": "Cercos Eléctricos",
+      "icon": "fence",
+      "description": "Protección perimetral contra intrusiones."
+    },
+    {
+      "title": "Custodia de Valores",
+      "icon": "values",
+      "description": "Transporte y resguardo seguro de bienes."
+    }
+  ],
+  "value_added": [
+    "Monitoreo 24/7/365",
+    "Respuesta inmediata",
+    "Coordinación con autoridades",
+    "Soporte técnico continuo",
+    "Registro de eventos"
+  ],
+  "certifications": ["ISO 9001:2015", "ISO 45001:2018", "ISO 14001:2015"]
+}
