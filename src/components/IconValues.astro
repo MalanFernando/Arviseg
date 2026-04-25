@@ -24,13 +24,13 @@ interface Props {
 }
 ---
 
-<div class="flex flex-wrap justify-center gap-12">
+<div class="flex flex-wrap gap-8 justify-evenly px-6">
   {
     home.values.list.map((value: { title: string; icon: string }) => {
       const ValueIcon = icons[value.icon as IconName];
       return (
-        <div class="grid gap-4 justify-items-center">
-          <div class="w-15">
+        <div class="values-content justify-items-center px-4 gap-8">
+          <div class="w-12">
             {ValueIcon && <ValueIcon class={value.title} />}
           </div>
           <h4 class="text-lg font-semibold">{value.title}</h4>

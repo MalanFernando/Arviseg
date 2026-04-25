@@ -4,24 +4,51 @@ import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
 ---
 
-<footer class="px-12 pt-12 pb-4 border-t border-red-500 mt-20">
-  <p class="max-w-[250px] text-2xl sm:text-3xl">Tu seguridad en nuestras manos</p>
+<footer class="px-12 pt-12 pb-4 border-t border-red-500 mt-30">
+  <p class="max-w-[220px] text-xl sm:text-2xl">
+    Tu seguridad en nuestras manos
+  </p>
   <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4 pt-8">
-    <div class="h-fit flex items-start gap-8">
-      <Picture class="size-16" src={logo} formats={['png']} alt="logo arviseg" />
-      <h3 class="text-3xl self-center">ARVISEG</h3>
+    <div class="h-fit flex items-start gap-4">
+      <Picture
+        class="size-16"
+        src={logo}
+        formats={['png']}
+        alt="logo arviseg"
+      />
+      <h3 class="text-2xl sm:text-3xl self-center">ARVISEG</h3>
     </div>
     <div class="flex flex-wrap justify-between gap-8 items-start">
       <div class="grid gap-4 max-w-[280px]">
         <h4 class="uppercase">Direccion</h4>
-        <p>Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH</p>
+        <p>
+          Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
+        </p>
       </div>
       <div class="grid gap-4">
         <h4 class="uppercase">Redes</h4>
         <ul class="flex gap-4">
-          <li><a href="https://www.facebook.com/arviseg" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-          <li><a href="https://www.instagram.com/arviseg" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.twitter.com/arviseg" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <li>
+            <a
+              href="https://www.facebook.com/arviseg"
+              target="_blank"
+              rel="noopener noreferrer">Facebook</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/arviseg"
+              target="_blank"
+              rel="noopener noreferrer">Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.twitter.com/arviseg"
+              target="_blank"
+              rel="noopener noreferrer">Twitter</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -47,8 +74,12 @@ import logo from '../assets/logos/logo-arviseg.png';
       </div>
     </div>
   </section>
-  <div class="flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4 border-t border-red-500">
-    <p>&copy; {new Date().getFullYear()} ARVISEG. Todos los derechos reservados.</p>
-    <p>Diseñado y desarrollado por </p>
+  <div
+    class="flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4 border-t border-red-500"
+  >
+    <p>
+      &copy; {new Date().getFullYear()} ARVISEG. Todos los derechos reservados.
+    </p>
+    <p>Diseñado y desarrollado por</p>
   </div>
 </footer>

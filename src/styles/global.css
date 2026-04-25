@@ -8,3 +8,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 6fr));
 }
+
+.values-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 6fr));
+}

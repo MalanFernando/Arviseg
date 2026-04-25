@@ -14,11 +14,13 @@ import Icon from '../components/Icon.astro';
 import ClientsSticker from '../components/ClientsSticker.astro';
 import ButtonToAction from '../components/ButtonToAction.astro';
 import IconValues from '../components/IconValues.astro';
+import MiniBanner from '../components/MiniBanner.astro';
 
 type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 ---
 
 <Layout title="ARVISEG">
+  <MiniBanner />
   <Header />
   <Hero hero={home.hero} />
 
@@ -42,22 +44,24 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <h3 class="text-2xl w-40 text-center justify-self-center">
       NUESTROS SERVICIOS
     </h3>
-    <div class="services-content gap-6">
+    <div class="flex flex-wrap gap-8 justify-center">
       {
         services.list.map((service) => (
           <>
-            <div class="p-4 justify-items-center text-center">
-              <Icon
-                name={
-                  service.icon as
-                    | 'shield'
-                    | 'monitor'
-                    | 'vip'
-                    | 'camera'
-                    | 'fence'
-                    | 'values'
-                }
-              />
+            <div class="services-content p-4 justify-items-center text-center">
+              <div class="flex w-[60px]">
+                <Icon
+                  name={
+                    service.icon as
+                      | 'shield'
+                      | 'monitor'
+                      | 'vip'
+                      | 'camera'
+                      | 'fence'
+                      | 'values'
+                  }
+                />
+              </div>
               <h3 class="text-lg font-semibold mt-3">{service.title}</h3>
             </div>
           </>
@@ -128,7 +132,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     </div>
 
     <div class="grid gap-12">
-      <h3 class="uppercase text-2xl">Valores Institucionales</h3>
+      <h3 class="uppercase text-2xl w-[220px] justify-self-center">
+        Valores Institucionales
+      </h3>
       <IconValues name="integrity" />
     </div>
   </section>
