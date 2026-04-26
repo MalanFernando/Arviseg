@@ -42,5 +42,10 @@
     "Soporte técnico continuo",
     "Registro de eventos"
   ],
-  "certifications": ["ISO 9001:2015", "ISO 45001:2018", "ISO 14001:2015"]
+  "certifications": [
+    "ISO 9001:2015",
+    "ISO 14001:2015",
+    "ISO 45001:2018",
+    "COPS GP 1505:2015"
+  ]
 }

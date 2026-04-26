@@ -14,13 +14,11 @@ import Icon from '../components/Icon.astro';
 import ClientsSticker from '../components/ClientsSticker.astro';
 import ButtonToAction from '../components/ButtonToAction.astro';
 import IconValues from '../components/IconValues.astro';
-import MiniBanner from '../components/MiniBanner.astro';
 
 type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 ---
 
 <Layout title="ARVISEG">
-  <MiniBanner />
   <Header />
   <Hero hero={home.hero} />
 
@@ -28,27 +26,41 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <p class="max-w-[450px] px-12 text-2xl text-center justify-self-center">
       Oferecemos nuestros servicios a una variedad de clientes.
     </p>
-    <div class="flex overflow-x-hidden gap-16 px-8">
-      {
-        home.clients.map((client: string) => (
-          <ClientsSticker
-            name={client as ClientName}
-            class="max-w-24 object-contain"
-          />
-        ))
-      }
+
+    <!-- Carrusel infinito -->
+    <div class="carousel-container overflow-hidden">
+      <div class="carousel-track flex gap-16 px-8">
+        <!-- Primera copia de las imagenes -->
+        {
+          home.clients.map((client: string) => (
+            <ClientsSticker
+              name={client as ClientName}
+              class="max-w-24 object-contain"
+            />
+          ))
+        }
+        <!-- Segunda copia para efecto infinito -->
+        {
+          home.clients.map((client: string) => (
+            <ClientsSticker
+              name={client as ClientName}
+              class="max-w-24 object-contain"
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <section class="px-12 py-8 grid gap-12 max-w-[1200px] m-auto">
+  <section class="px-12 py-8 grid gap-12 m-auto">
     <h3 class="text-2xl w-40 text-center justify-self-center">
       NUESTROS SERVICIOS
     </h3>
-    <div class="flex flex-wrap gap-8 justify-center">
+    <div class="max-w-[1000px] flex flex-wrap gap-8 justify-center m-auto">
       {
         services.list.map((service) => (
           <>
-            <div class="services-content p-4 justify-items-center text-center">
+            <div class="services-content justify-items-center text-center">
               <div class="flex w-[60px]">
                 <Icon
                   name={
@@ -121,7 +133,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   <section class="grid text-center gap-12">
     <div class="relative grid justify-items-center">
       <Picture
-        class="w-full max-w-[1024px]"
+        class="w-full max-w-[1024px] min-h-[210px] object-cover"
         src={image4}
         formats={['jpg']}
         alt="uniform arviseg"

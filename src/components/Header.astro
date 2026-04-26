@@ -1,16 +1,127 @@
 ---
 import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
-// components/Header.astro
+import MiniBanner from '../components/MiniBanner.astro';
 ---
 
-<header class="py-4 px-12 flex gap-4 justify-between">
-  <Picture class="size-16" src={logo} formats={['png']} alt="logo arviseg" />
-  <nav class="flex gap-4 h-fit">
-    <a class="p-2" href="/#home">Inicio</a>
-    <a class="p-2" href="/#about">Nosotros</a>
-    <a class="p-2" href="/services/">Servicios</a>
-    <a class="p-2" href="/contact/">Contacto</a>
-  </nav>
-  <a href="#contact" class="py-2 px-4 h-fit"> Contáctanos </a>
+<div class="hidden md:block">
+  <MiniBanner />
+</div>
+<header class="sticky top-0 z-50">
+  <!-- Barra principal -->
+  <div class="m-auto px-6 sm:px-12 py-3 flex items-center justify-between">
+    <Picture class="size-16" src={logo} formats={['png']} alt="logo arviseg" />
+
+    <!-- Links escritorio -->
+    <nav class="hidden md:flex gap-4">
+      <a class="p-2" href="/#home">Inicio</a>
+      <a class="p-2" href="/#about">Nosotros</a>
+      <a class="p-2" href="/services/">Servicios</a>
+      <a class="p-2" href="/contact/">Contacto</a>
+    </nav>
+
+    <div class="flex gap-4 items-center">
+      <a href="#contact" class="py-2 px-4"> Contáctanos </a>
+
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" class="md:hidden p-2">
+        <!-- Icono hamburguesa -->
+        <svg
+          id="hamburger"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <!-- Icono X -> oculto inicialmente -->
+        <svg
+          id="close"
+          class="w-6 h-6 hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex-col"
+  >
+    <nav class="flex flex-col p-4 gap-2">
+      <a class="p-2" href="/#home">Inicio</a>
+      <a class="p-2" href="/#about">Nosotros</a>
+      <a class="p-2" href="/services/">Servicios</a>
+      <a class="p-2" href="/contact/">Contacto</a>
+    </nav>
+    <MiniBanner />
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  const close = document.getElementById('close');
+
+  function closeMenu() {
+    if (!menu || menu.classList.contains('hidden')) return;
+    menu.classList.add('hidden');
+    menu.classList.remove('flex');
+    if (hamburger && close) {
+      hamburger.classList.remove('hidden');
+      close.classList.add('hidden');
+    }
+  }
+
+  function openMenu() {
+    if (!menu || !menu.classList.contains('hidden')) return;
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    if (hamburger && close) {
+      hamburger.classList.add('hidden');
+      close.classList.remove('hidden');
+    }
+  }
+
+  if (btn && menu && hamburger && close) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita que el click se propague al document
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Cerrar al hacer clic fuera del menú o del botón
+    document.addEventListener('click', (e) => {
+      if (menu.classList.contains('hidden')) return;
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (menu.contains(target) || btn.contains(target)) return;
+      closeMenu();
+    });
+
+    // Cerrar al redimensionar para evitar que el menú móvil quede visible en escritorio
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+  }
+</script>

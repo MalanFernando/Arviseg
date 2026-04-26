@@ -29,8 +29,8 @@ interface Props {
     home.values.list.map((value: { title: string; icon: string }) => {
       const ValueIcon = icons[value.icon as IconName];
       return (
-        <div class="values-content justify-items-center px-4 gap-8">
-          <div class="w-12">
+        <div class="values-content justify-items-center px-4 gap-5">
+          <div class="w-10 sm:w-12">
             {ValueIcon && <ValueIcon class={value.title} />}
           </div>
           <h4 class="text-lg font-semibold">{value.title}</h4>

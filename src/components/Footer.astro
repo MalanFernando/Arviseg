@@ -2,13 +2,14 @@
 // components/Footer.astro
 import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
+import SocialIcons from './SocialIcons.astro';
 ---
 
-<footer class="px-12 pt-12 pb-4 border-t border-red-500 mt-30">
+<footer class="px-12 pt-12 pb-4 border-t border-red-500 mt-20">
   <p class="max-w-[220px] text-xl sm:text-2xl">
     Tu seguridad en nuestras manos
   </p>
-  <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4 pt-8">
+  <section class="grid md:grid-cols-3 gap-8 mb-4 pt-8">
     <div class="h-fit flex items-start gap-4">
       <Picture
         class="size-16"
@@ -27,29 +28,7 @@ import logo from '../assets/logos/logo-arviseg.png';
       </div>
       <div class="grid gap-4">
         <h4 class="uppercase">Redes</h4>
-        <ul class="flex gap-4">
-          <li>
-            <a
-              href="https://www.facebook.com/arviseg"
-              target="_blank"
-              rel="noopener noreferrer">Facebook</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/arviseg"
-              target="_blank"
-              rel="noopener noreferrer">Instagram</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.twitter.com/arviseg"
-              target="_blank"
-              rel="noopener noreferrer">Twitter</a
-            >
-          </li>
-        </ul>
+        <SocialIcons />
       </div>
     </div>
     <div class="md:w-full flex flex-wrap justify-between gap-8 items-start">

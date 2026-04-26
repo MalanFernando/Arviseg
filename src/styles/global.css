@@ -6,10 +6,39 @@
 
 .services-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 6fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
 }
 
 .values-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 6fr));
+}
+
+
+/* CARRUSEL */
+
+.carousel-container {
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll 30s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
