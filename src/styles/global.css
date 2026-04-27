@@ -1,9 +1,293 @@
 @import "tailwindcss";
 
-* {
-  outline: 1px solid #ccc;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Tipografias */
+  --font-family: 'Roboto', -apple-system, , 'Segoe UI', sans-serif, system-ui,
+    sans-serif;
+  /* Tamaños segun imagen */
+  --text-h1: 64px;
+  --text-h2: 36px;
+  --text-h3: 32px;
+  --text-h4: 24px;
+  --text-h5: 20px;
+  --text-h6: 16px;
+  --text-body: 16px;
+
+  /* Alturas de linea */
+  --line-h1: 92px;
+  --line-h2: 59px;
+  --line-h3: 47px;
+  --line-h4: 38px;
+  --line-h5: 30px;
+  --line-h6: 24px;
+  --line-body: 24px;
+
+
+  /* Colores */
+
+  /* Botones, formulario, SVG, textos, cuadro de texto */
+  --color-primary: #fcd601;
+  /* Iconos SVG */
+  --color-secondary: #b61bad;
+  /* Fondo web */
+  --color-background: #180b1a;
+  /* Fondo web light */
+  --color-background2: #180b1a94;
+  /* Figuras */
+  --color-accent: #8a398b;
+  /* Textos y botón */
+  --color-dark: #080408;
+  /* Textos */
+  --color-text: #fcfcfc;
+  /* Fondo componente MiniBanner  */
+  --color-component: #220e27;
+  /* bg Cards */
+  --color-cards: #271327;
+  /* Lineas */
+  --color-lines: #481c53;
+
+  /* Adicionales */
+  /* Hover para botones primarios */
+  --color-primary-hover: #ffdf2d;
+  /* Hover para elementos secundarios */
+  --color-secondary-hover: #9e0f94;
+  /* Bordes */
+  --color-border: rgba(252, 214, 1, 0.2);
+  /* Sombras */
+  --color-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Gradientes útiles */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  --gradient-overlay: linear-gradient(to bottom, transparent, var(--color-background));
+
+  /* Transiciones */
+  --transition-default: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+  font-family: var(--font-family);
+}
+
+
+nav>a {
+  text-decoration: none;
+  transition: var(--transition-default);
+}
+
+nav>a:hover {
+  color: var(--color-primary);
+}
+
+.header {
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: var(--color-background2);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.185);
+}
+
+#main-bar.menu-open {
+  background-color: var(--color-component);
+  /* o el color que quieras */
+  transition: background-color 0.3s ease;
+}
+
+/* MiniBanner */
+.minibanner,
+.menu {
+  background-color: var(--color-component);
+  transition: var(--transition-default);
+}
+
+.menu-effect:hover {
+  background-color: var(--color-background);
+}
+
+/* Button */
+.action-hover {
+  transition: var(--transition-default);
+}
+
+.action-hover:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-component {
+  background-color: var(--color-component);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.figure::after {
+  transition: var(--transition-default);
+}
+
+@media screen and (min-width: 768px) {
+  .figure::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background-color: var(--color-accent);
+    border-radius: 4px;
+    top: -235px;
+    left: 0;
+    transform: rotate(30deg);
+  }
+}
+
+@media screen and (min-width: 920px) {
+  .figure::after {
+    left: -20px;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .figure::after {
+    left: -80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .figure::after {
+    left: -100px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .icons-color {
+    color: var(--color-background);
+  }
+
+  .icons-color a:hover .social-svg {
+    color: var(--color-text);
+  }
+}
+
+/* Hero */
+.hero {
+  background-color: var(--color-background);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.795), rgba(19, 11, 26, 0.705)), url("../assets/images/guardAction.jpg");
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-position: 10% 0%;
+}
+
+/* Images */
+.image-1,
+.image-2,
+.image-3,
+.image-4,
+.image-5,
+.image-6 {
+  filter: brightness(0.7) contrast(1);
+  mix-blend-mode: luminosity;
+  transition: var(--transition-default);
+}
+
+.image-1:hover,
+.image-2:hover,
+.image-3:hover,
+.image-4:hover,
+.image-5:hover,
+.image-6:hover {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+/* Cards */
+.cards {
+  background-color: var(--color-cards);
+}
+
+/* Lines */
+.lines {
+  border-top: 1px solid var(--color-lines);
+}
+
+.lines2 {
+  border-bottom: 1px solid var(--color-lines);
+}
+
+.social-svg {
+  transition: all 0.3s ease;
+}
+
+.social-icons:hover .social-svg {
+  color: var(--color-secondary);
+}
+
+
+/* Servicios */
 .services-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
@@ -41,4 +325,104 @@
   100% {
     transform: translateX(-50%);
   }
+}
+
+.filter-carousel {
+  filter: grayscale(90%) brightness(100%) contrast(0.8);
+  transition: all 0.3s ease;
+}
+
+.filter-carousel:hover {
+  filter: none;
+}
+
+.form-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.801), rgba(19, 11, 26, 0.705)), url('../assets/images/motorcicles.jpg');
+  background-color: var(--color-background);
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-position: 10% 0%;
+}
+
+.mails {
+  transition: var(--transition-default);
+}
+
+.mails:hover {
+  color: var(--color-primary);
+}
+
+/* Map */
+.map-container {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.068);
+}
+
+/* Buttons */
+.content-buttons {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  z-index: 80;
+}
+
+
+/* Button up */
+.back-to-top {
+  width: 45px;
+  height: 45px;
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* Whatasapp button*/
+.whatsapp-btn {
+  width: 45px;
+  height: 45px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  background-color: #1eb957;
+}
+
+/* Design */
+.zentro {
+  color: var(--color-primary);
+  transition: var(--transition-default);
+}
+
+.zentro:hover {
+  color: var(--color-accent);
 }

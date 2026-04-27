@@ -22,7 +22,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   <Header />
   <Hero hero={home.hero} />
 
-  <section class="my-30 grid gap-12">
+  <section class="mb-30 grid gap-12">
     <p class="max-w-[450px] px-12 text-2xl text-center justify-self-center">
       Oferecemos nuestros servicios a una variedad de clientes.
     </p>
@@ -35,7 +35,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
           home.clients.map((client: string) => (
             <ClientsSticker
               name={client as ClientName}
-              class="max-w-24 object-contain"
+              class="filter-carousel max-w-26 object-contain m-4"
             />
           ))
         }
@@ -44,7 +44,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
           home.clients.map((client: string) => (
             <ClientsSticker
               name={client as ClientName}
-              class="max-w-24 object-contain"
+              class="filter-carousel max-w-26 object-contain m-4"
             />
           ))
         }
@@ -53,7 +53,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
 
   <section class="px-12 py-8 grid gap-12 m-auto">
-    <h3 class="text-2xl w-40 text-center justify-self-center">
+    <h3 class="text-primary text-2xl w-40 text-center justify-self-center">
       NUESTROS SERVICIOS
     </h3>
     <div class="max-w-[1000px] flex flex-wrap gap-8 justify-center m-auto">
@@ -80,19 +80,23 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         ))
       }
     </div>
-    <a href="/servicios" class="py-2 px-4 justify-self-center">Conocer más</a>
+    <a
+      href="/services/"
+      class="bg-primary action-hover text-dark py-2 px-4 justify-self-center"
+      >Conocer más</a
+    >
   </section>
 
   <section id="about" class="px-12 py-8 my-12 grid gap-20">
     <article class="relative grid gap-12">
       <Picture
-        class="w-full max-w-[520px] justify-self-center sm:justify-self-end sm:relative md:top-20"
+        class="image-1 w-full max-w-[520px] justify-self-center sm:justify-self-end sm:relative md:top-20"
         src={image1}
         formats={['jpg']}
         alt="team arviseg"
       />
       <div class="grid gap-16 max-w-[450px]">
-        <h3 class="uppercase text-xl">{home.about.title}</h3>
+        <h3 class="text-primary uppercase text-2xl">{home.about.title}</h3>
         <p>{home.about.description}</p>
       </div>
     </article>
@@ -100,29 +104,29 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       class="grid gap-12 relative md:flex md:flex-row-reverse md:justify-between"
     >
       <div class="grid gap-12 max-w-[380px] justify-self-end">
-        <h3 class="uppercase text-2xl">{home.mission.title}</h3>
+        <h3 class="text-primary uppercase text-4xl">{home.mission.title}</h3>
         <p>{home.mission.description}</p>
       </div>
       <Picture
-        class="w-full max-w-[410px] relative md:top-10"
+        class="image-2 w-full max-w-[410px] relative md:top-10"
         src={image2}
         formats={['jpg']}
         alt="car arviseg"
       />
     </article>
-    <div class="grid gap-12 md:mt-8 max-w-[480px]">
-      <h3 class="uppercase text-2xl">{home.vision.title}</h3>
+    <div class="grid gap-12 md:mt-8 max-w-[420px]">
+      <h3 class="text-primary uppercase text-4xl">{home.vision.title}</h3>
       <p>{home.vision.description}</p>
     </div>
     <article class="grid justify-center lg:justify-end relative lg:-top-25">
       <Picture
-        class="w-full max-w-[420px] lg:mr-15"
+        class="image-3 w-full max-w-[480px] lg:mr-15"
         src={image3}
         formats={['jpg']}
         alt="uniform arviseg"
       />
       <div
-        class="max-w-[400px] sm:max-w-[450px] relative bottom-8 transform -translate-x-4 sm:-translate-x-20 px-6 py-4"
+        class="bg-primary text-dark max-w-[400px] sm:max-w-[450px] relative bottom-8 transform -translate-x-4 sm:-translate-x-20 px-6 py-4"
       >
         <p>{home.experience.label}</p>
         <p>{home.experience.years}</p>
@@ -133,7 +137,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   <section class="grid text-center gap-12">
     <div class="relative grid justify-items-center">
       <Picture
-        class="w-full max-w-[1024px] min-h-[210px] object-cover"
+        class="image-4 w-full max-w-[1024px] min-h-[210px] object-cover"
         src={image4}
         formats={['jpg']}
         alt="uniform arviseg"
@@ -144,7 +148,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     </div>
 
     <div class="grid gap-12">
-      <h3 class="uppercase text-2xl w-[220px] justify-self-center">
+      <h3 class="text-primary uppercase text-2xl w-[220px] justify-self-center">
         Valores Institucionales
       </h3>
       <IconValues name="integrity" />

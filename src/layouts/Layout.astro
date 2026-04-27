@@ -1,4 +1,6 @@
 ---
+import ButtonUp from '../components/ButtonUp.astro';
+import WhatsappButton from '../components/WhatsappButton.astro';
 import '../styles/global.css';
 ---
 
@@ -13,6 +15,10 @@ import '../styles/global.css';
     <title>Arviseg</title>
   </head>
   <body class="max-w-[1440px] m-auto">
+    <div class="content-buttons grid gap-4">
+      <ButtonUp />
+      <WhatsappButton />
+    </div>
     <slot />
   </body>
 </html>

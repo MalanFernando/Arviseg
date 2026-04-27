@@ -1,11 +1,13 @@
 ---
+import { Picture } from 'astro:assets';
 import ButtonToAction from './ButtonToAction.astro';
+import action from '../assets/images/guardAction.jpg';
 
 // components/Hero.astro
 const { hero } = Astro.props;
 ---
 
-<section class="px-12 py-16">
+<section class="hero px-12 pb-16 pt-55 relative -top-22">
   <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase">
     {hero.name}
   </h1>
@@ -14,7 +16,7 @@ const { hero } = Astro.props;
   >
     {hero.title}
   </h3>
-  <p class="text-xl mt-2">{hero.subtitle}</p>
+  <p class="text-primary text-2xl mt-2">{hero.subtitle}</p>
   <p class="mt-4">{hero.description}</p>
   <ButtonToAction />
 </section>

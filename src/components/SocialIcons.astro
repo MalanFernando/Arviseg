@@ -13,19 +13,24 @@ const socialIcons = [
   {
     name: 'Instagram',
     component: Instagram,
-    url: 'https://www.instagram.com/arviseg'
+    url: 'https://www.instagram.com/arvisegecuador/'
   },
   { name: 'Twitter', component: Twitter, url: 'https://twitter.com/arviseg' }
 ];
 ---
 
-<div class="">
-  <ul class="flex gap-4">
+<div>
+  <ul class="flex gap-4 relative z-10">
     {
       socialIcons.map((icon) => (
         <li>
-          <a href={icon.url} target="_blank" rel="noopener noreferrer">
-            <icon.component />
+          <a
+            class="social-icons"
+            href={icon.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <icon.component class="social-svg" />
           </a>
         </li>
       ))

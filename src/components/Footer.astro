@@ -3,13 +3,16 @@
 import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
 import SocialIcons from './SocialIcons.astro';
+import ContactsList from './ContactsList.astro';
 ---
 
-<footer class="px-12 pt-12 pb-4 border-t border-red-500 mt-20">
-  <p class="max-w-[220px] text-xl sm:text-2xl">
+<footer class="lines px-12 pt-12 pb-4 mt-20">
+  <p class="text-primary max-w-[220px] text-xl sm:text-2xl">
     Tu seguridad en nuestras manos
   </p>
-  <section class="grid md:grid-cols-3 gap-8 mb-4 pt-8">
+  <section
+    class="grid sm:grid-cols-2 lg:grid-cols-4 justify-between gap-12 mb-4 pt-8"
+  >
     <div class="h-fit flex items-start gap-4">
       <Picture
         class="size-16"
@@ -17,48 +20,42 @@ import SocialIcons from './SocialIcons.astro';
         formats={['png']}
         alt="logo arviseg"
       />
-      <h3 class="text-2xl sm:text-3xl self-center">ARVISEG</h3>
+      <h3 class="text-primary text-2xl sm:text-3xl self-center">ARVISEG</h3>
     </div>
     <div class="flex flex-wrap justify-between gap-8 items-start">
       <div class="grid gap-4 max-w-[280px]">
-        <h4 class="uppercase">Direccion</h4>
+        <h4 class="text-primary uppercase">Direccion</h4>
         <p>
           Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
         </p>
       </div>
       <div class="grid gap-4">
-        <h4 class="uppercase">Redes</h4>
+        <h4 class="text-primary uppercase">Redes</h4>
         <SocialIcons />
       </div>
     </div>
-    <div class="md:w-full flex flex-wrap justify-between gap-8 items-start">
-      <div class="grid gap-4">
-        <h4 class="uppercase">Contactos</h4>
-        <ul class="grid gap-2">
-          <li>0987654321 / 0912345678</li>
-          <li>2506-002 / 2502-692</li>
-          <li>gestion@anvi-arviseg.com</li>
-          <li>asistente@anvi-arviseg.com</li>
-          <li>seguridad1@anvi-arviseg.com</li>
-        </ul>
-      </div>
-      <div class="grid gap-4">
-        <h4 class="uppercase">Enlaces</h4>
-        <ul>
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#home">Nosotros</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </div>
+    <ContactsList />
+    <div class="grid gap-4">
+      <h4 class="text-primary uppercase">Enlaces</h4>
+      <nav class="w-fit grid gap-2">
+        <a href="/#">Inicio</a>
+        <a href="/#about">Nosotros</a>
+        <a href="/services/">Servicios</a>
+        <a href="/contact/">Contacto</a>
+      </nav>
     </div>
   </section>
   <div
-    class="flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4 border-t border-red-500"
+    class="lines flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4"
   >
     <p>
       &copy; {new Date().getFullYear()} ARVISEG. Todos los derechos reservados.
     </p>
-    <p>Diseñado y desarrollado por</p>
+    <p>
+      Diseñado y desarrollado por <a
+        class="zentro"
+        href="https://www.instagram.com/zentro.ec_/">zentro.ec</a
+      >
+    </p>
   </div>
 </footer>

@@ -11,7 +11,7 @@
     "description": "Servicio de vigilancia privada uniformada las 24 horas, los 365 días del año.",
     "cta": {
       "text": "Solicitar Cotización",
-      "link": "#contact"
+      "link": "/contact/"
     }
   },
   "clients": [

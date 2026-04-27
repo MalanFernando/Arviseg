@@ -7,21 +7,33 @@ import MiniBanner from '../components/MiniBanner.astro';
 <div class="hidden md:block">
   <MiniBanner />
 </div>
-<header class="sticky top-0 z-50">
+<header id="home" class="header sticky top-0 z-50 backdrop-blur-[1px]">
   <!-- Barra principal -->
-  <div class="m-auto px-6 sm:px-12 py-3 flex items-center justify-between">
-    <Picture class="size-16" src={logo} formats={['png']} alt="logo arviseg" />
+  <div
+    id="main-bar"
+    class="m-auto px-6 md:px-12 py-3 flex items-center justify-between"
+  >
+    <a href="/#"
+      ><Picture
+        class="size-16"
+        src={logo}
+        formats={['png']}
+        alt="logo arviseg"
+      /></a
+    >
 
     <!-- Links escritorio -->
     <nav class="hidden md:flex gap-4">
-      <a class="p-2" href="/#home">Inicio</a>
+      <a class="p-2" href="/#">Inicio</a>
       <a class="p-2" href="/#about">Nosotros</a>
       <a class="p-2" href="/services/">Servicios</a>
       <a class="p-2" href="/contact/">Contacto</a>
     </nav>
 
     <div class="flex gap-4 items-center">
-      <a href="#contact" class="py-2 px-4"> Contáctanos </a>
+      <a href="/contact/" class="bg-primary action-hover text-dark py-2 px-4">
+        Contáctanos
+      </a>
 
       <!-- Botón hamburguesa -->
       <button id="menu-btn" class="md:hidden p-2">
@@ -59,15 +71,17 @@ import MiniBanner from '../components/MiniBanner.astro';
 
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex-col"
+    class="menu hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex-col"
   >
-    <nav class="flex flex-col p-4 gap-2">
-      <a class="p-2" href="/#home">Inicio</a>
-      <a class="p-2" href="/#about">Nosotros</a>
-      <a class="p-2" href="/services/">Servicios</a>
-      <a class="p-2" href="/contact/">Contacto</a>
+    <nav class="lines2 flex flex-col">
+      <a class="menu-effect p-4 pl-12" href="/#home">Inicio</a>
+      <a class="menu-effect p-4 pl-12" href="/#about">Nosotros</a>
+      <a class="menu-effect p-4 pl-12" href="/services/">Servicios</a>
+      <a class="menu-effect p-4 pl-12" href="/contact/">Contacto</a>
     </nav>
-    <MiniBanner />
+    <div class="py-6">
+      <MiniBanner />
+    </div>
   </div>
 </header>
 
@@ -76,11 +90,13 @@ import MiniBanner from '../components/MiniBanner.astro';
   const menu = document.getElementById('mobile-menu');
   const hamburger = document.getElementById('hamburger');
   const close = document.getElementById('close');
+  const mainBar = document.getElementById('main-bar');
 
   function closeMenu() {
     if (!menu || menu.classList.contains('hidden')) return;
     menu.classList.add('hidden');
     menu.classList.remove('flex');
+    mainBar?.classList.remove('menu-open');
     if (hamburger && close) {
       hamburger.classList.remove('hidden');
       close.classList.add('hidden');
@@ -91,6 +107,7 @@ import MiniBanner from '../components/MiniBanner.astro';
     if (!menu || !menu.classList.contains('hidden')) return;
     menu.classList.remove('hidden');
     menu.classList.add('flex');
+    mainBar?.classList.add('menu-open');
     if (hamburger && close) {
       hamburger.classList.add('hidden');
       close.classList.remove('hidden');
@@ -99,7 +116,7 @@ import MiniBanner from '../components/MiniBanner.astro';
 
   if (btn && menu && hamburger && close) {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Evita que el click se propague al document
+      e.stopPropagation();
       const isOpen = !menu.classList.contains('hidden');
       if (isOpen) {
         closeMenu();
@@ -117,11 +134,23 @@ import MiniBanner from '../components/MiniBanner.astro';
       closeMenu();
     });
 
-    // Cerrar al redimensionar para evitar que el menú móvil quede visible en escritorio
+    // Cerrar al redimensionar
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768) {
         closeMenu();
       }
     });
   }
+</script>
+
+<script>
+  const header = document.querySelector('.header');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
 </script>

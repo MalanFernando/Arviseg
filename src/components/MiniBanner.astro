@@ -4,8 +4,10 @@ import InfoIcons from './InfoIcons.astro';
 ---
 
 <section
-  class="grid justify-items-center md:flex md:justify-between gap-8 px-12 py-4"
+  class="minibanner grid justify-items-center md:flex md:justify-between gap-8 px-12 py-2 bg-gray-100 text-sm overflow-x-hidden overflow-y-hidden"
 >
   <InfoIcons />
-  <SocialIcons />
+  <div class="figure icons-color relative">
+    <SocialIcons />
+  </div>
 </section>
