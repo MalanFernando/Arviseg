@@ -102,8 +102,11 @@
 }
 
 html {
+  scroll-padding-top: 80px;
+  /* Compensa el header */
   scroll-behavior: smooth;
 }
+
 
 body {
   color: var(--color-text);
@@ -112,13 +115,33 @@ body {
   font-family: var(--font-family);
 }
 
-
 nav>a {
   text-decoration: none;
   transition: var(--transition-default);
 }
 
 nav>a:hover {
+  color: var(--color-primary);
+}
+
+.desk-nav>a {
+  padding: 0 12px;
+}
+
+/* Home */
+/* Nosotros */
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+/* Servicios */
+body#services .nav-services,
+body#services a[href="/services/"] {
+  color: var(--color-primary);
+}
+
+/* Contacto */
+body#contact .nav-contact {
   color: var(--color-primary);
 }
 
@@ -239,7 +262,6 @@ nav>a:hover {
   background-image: linear-gradient(rgba(0, 0, 0, 0.795), rgba(19, 11, 26, 0.705)), url("../assets/images/guardAction.jpg");
   background-size: cover;
   background-blend-mode: luminosity;
-  background-position: 10% 0%;
 }
 
 /* Images */

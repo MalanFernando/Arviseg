@@ -18,11 +18,12 @@ import IconValues from '../components/IconValues.astro';
 type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 ---
 
-<Layout title="ARVISEG">
-  <Header />
+<Layout title="ARVISEG" pageId="home">
   <Hero hero={home.hero} />
 
-  <section class="mb-30 grid gap-12">
+  <button id="test-scroll">Ir a About (prueba)</button>
+
+  <section class="mb-30 mt-15 grid gap-12">
     <p class="max-w-[450px] px-12 text-2xl text-center justify-self-center">
       Oferecemos nuestros servicios a una variedad de clientes.
     </p>
@@ -51,7 +52,6 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       </div>
     </div>
   </section>
-
   <section class="px-12 py-8 grid gap-12 m-auto">
     <h3 class="text-primary text-2xl w-40 text-center justify-self-center">
       NUESTROS SERVICIOS
@@ -156,3 +156,12 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
   <Footer />
 </Layout>
+
+<script>
+  document.getElementById('test-scroll')?.addEventListener('click', () => {
+    const about = document.getElementById('about');
+    if (about) {
+      about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>

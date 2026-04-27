@@ -2,6 +2,8 @@
 import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
 import MiniBanner from '../components/MiniBanner.astro';
+
+const currentPage = Astro.url.pathname;
 ---
 
 <div class="hidden md:block">
@@ -11,7 +13,7 @@ import MiniBanner from '../components/MiniBanner.astro';
   <!-- Barra principal -->
   <div
     id="main-bar"
-    class="m-auto px-6 md:px-12 py-3 flex items-center justify-between"
+    class="m-auto px-6 md:px-12 py-2 flex items-center justify-between"
   >
     <a href="/#"
       ><Picture
@@ -23,15 +25,18 @@ import MiniBanner from '../components/MiniBanner.astro';
     >
 
     <!-- Links escritorio -->
-    <nav class="hidden md:flex gap-4">
-      <a class="p-2" href="/#">Inicio</a>
-      <a class="p-2" href="/#about">Nosotros</a>
-      <a class="p-2" href="/services/">Servicios</a>
-      <a class="p-2" href="/contact/">Contacto</a>
+    <nav class="desk-nav hidden md:flex gap-4">
+      <a class="p-2 nav-link nav-home" href="/#">Inicio</a>
+      <a class="p-2 nav-link nav-about" href="/#about">Nosotros</a>
+      <a class="p-2 nav-link nav-services" href="/services/">Servicios</a>
+      <a class="p-2 nav-link nav-contact" href="/contact/">Contacto</a>
     </nav>
 
     <div class="flex gap-4 items-center">
-      <a href="/contact/" class="bg-primary action-hover text-dark py-2 px-4">
+      <a
+        href="/contact/"
+        class="bg-primary text-color action-hover text-dark py-2 px-4"
+      >
         Contáctanos
       </a>
 
@@ -74,10 +79,17 @@ import MiniBanner from '../components/MiniBanner.astro';
     class="menu hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex-col"
   >
     <nav class="lines2 flex flex-col">
-      <a class="menu-effect p-4 pl-12" href="/#home">Inicio</a>
-      <a class="menu-effect p-4 pl-12" href="/#about">Nosotros</a>
-      <a class="menu-effect p-4 pl-12" href="/services/">Servicios</a>
-      <a class="menu-effect p-4 pl-12" href="/contact/">Contacto</a>
+      <a class="menu-effect p-4 pl-12 nav-link nav-home" href="/#home">Inicio</a
+      >
+      <a class="menu-effect p-4 pl-12 nav-link nav-about" href="/#about"
+        >Nosotros</a
+      >
+      <a class="menu-effect p-4 pl-12 nav-link nav-services" href="/services/"
+        >Servicios</a
+      >
+      <a class="menu-effect p-4 pl-12 nav-link nav-contact" href="/contact/"
+        >Contacto</a
+      >
     </nav>
     <div class="py-6">
       <MiniBanner />
@@ -153,4 +165,60 @@ import MiniBanner from '../components/MiniBanner.astro';
       header?.classList.remove('scrolled');
     }
   });
+</script>
+
+<script>
+  // Solo para el link de about en home
+  if (window.location.pathname === '/' || window.location.pathname === '') {
+    const aboutSection = document.getElementById('about');
+    const aboutLink = document.querySelectorAll('.nav-about');
+    const homeLink = document.querySelectorAll('.nav-home');
+    const servicesLink = document.querySelectorAll('.nav-services');
+    const contactLink = document.querySelectorAll('.nav-contact');
+
+    // Resetear todos
+    function resetActive() {
+      homeLink.forEach((link) => link?.classList.remove('active'));
+      aboutLink.forEach((link) => link?.classList.remove('active'));
+      servicesLink.forEach((link) => link?.classList.remove('active'));
+      contactLink.forEach((link) => link?.classList.remove('active'));
+    }
+
+    // Activar home por defecto al cargar
+    resetActive();
+    homeLink.forEach((link) => link?.classList.add('active'));
+
+    // Activar según scroll
+    window.addEventListener('scroll', () => {
+      const aboutPosition = aboutSection?.getBoundingClientRect();
+      const homePosition = document
+        .getElementById('home')
+        ?.getBoundingClientRect();
+
+      if (
+        aboutPosition &&
+        aboutPosition.top <= 150 &&
+        aboutPosition.bottom >= 150
+      ) {
+        resetActive();
+        aboutLink.forEach((link) => link?.classList.add('active'));
+      } else if (homePosition && homePosition.top <= 150) {
+        resetActive();
+        homeLink.forEach((link) => link?.classList.add('active'));
+      }
+    });
+  }
+
+  // Para otras paginas
+  const currentPath = window.location.pathname;
+  if (currentPath === '/services/') {
+    document
+      .querySelectorAll('.nav-services')
+      .forEach((link) => link?.classList.add('active'));
+  }
+  if (currentPath === '/contact/') {
+    document
+      .querySelectorAll('.nav-contact')
+      .forEach((link) => link?.classList.add('active'));
+  }
 </script>

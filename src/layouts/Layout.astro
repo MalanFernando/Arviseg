@@ -1,7 +1,9 @@
 ---
 import ButtonUp from '../components/ButtonUp.astro';
+import Header from '../components/Header.astro';
 import WhatsappButton from '../components/WhatsappButton.astro';
 import '../styles/global.css';
+const { pageId } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,11 +16,12 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <title>Arviseg</title>
   </head>
-  <body class="max-w-[1440px] m-auto">
+  <body id={pageId} class="max-w-[1440px] m-auto">
     <div class="content-buttons grid gap-4">
       <ButtonUp />
       <WhatsappButton />
     </div>
+    <Header />
     <slot />
   </body>
 </html>
