@@ -1,7 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
 import ContactForm from '../components/ContactForm.astro';
-import Header from '../components/Header.astro';
 import contact from '../data/contact.json';
 import Layout from '../layouts/Layout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
@@ -11,40 +10,44 @@ import Map from '../components/Map.astro';
 
 <Layout title="ARVISEG contactos" pageId="contact">
   <section
-    class="form-section image-7 px-12 py-8 pt-50 grid gap-8 relative -top-20"
+    class="form-section image-7 px-12 py-8 pt-40 grid gap-8 relative -top-18"
   >
     <div class="grid gap-8">
-      <h2 class="text-primary text-3xl sm:text-5xl uppercase">Contáctanos</h2>
+      <h2 class="text-primary text-3xl sm:text-6xl uppercase font-bold">
+        Contáctanos
+      </h2>
       <p class="max-w-[320px] text-lg">
         Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
       </p>
     </div>
-    <div class="grid md:grid-flow-row-dense md:grid-cols-3 gap-12">
+    <div class="grid md:grid-flow-row-dense lg:grid-cols-3 gap-12">
       <div class="grid gap-4">
-        <h3 class="text-primary h-fit max-w-[200px] text-2xl">
-          Tu seguridad en nuestras manos
-        </h3>
-        <div class="grid gap-4 h-fit mt-8 md:-mt-8">
-          <h4 class="text-primary uppercase">Contactos</h4>
-          <div class="flex flex-wrap gap-4 justify-between">
-            <ul>
-              {
-                contact.info.phones.map((phone) => (
-                  <li class="mb-2">{phone}</li>
-                ))
-              }
-            </ul>
-            <ul>
-              {
-                contact.info.emails.map((mail) => (
-                  <li class="mb-2">
-                    <a class="mails" href={`mailto:${mail}`}>
-                      {mail}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+        <div>
+          <h3 class="text-primary h-fit max-w-[200px] text-2xl font-semibold">
+            Tu seguridad en nuestras manos
+          </h3>
+          <div class="grid gap-4 h-fit mt-8">
+            <h4 class="text-primary uppercase font-bold">Contactos</h4>
+            <div class="">
+              <ul>
+                {
+                  contact.info.phones.map((phone) => (
+                    <li class="mb-2">{phone}</li>
+                  ))
+                }
+              </ul>
+              <ul>
+                {
+                  contact.info.emails.map((mail) => (
+                    <li class="mb-1">
+                      <a class="mails" href={`mailto:${mail}`}>
+                        {mail}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
           </div>
         </div>
         <div class="self-end">
@@ -55,7 +58,7 @@ import Map from '../components/Map.astro';
     </div>
   </section>
   <section class="px-12 pt-8 grid gap-8">
-    <h3 class="text-primary text-3xl sm:text-4xl uppercase">
+    <h3 class="text-primary text-3xl sm:text-5xl uppercase font-bold">
       Como Encontrarnos
     </h3>
     <Map />
@@ -67,21 +70,28 @@ import Map from '../components/Map.astro';
     >
       <div class="h-fit flex items-start gap-4">
         <Picture
-          class="size-16"
+          class="size-14"
           src={logo}
           formats={['png']}
           alt="logo arviseg"
         />
-        <h3 class="text-primary text-2xl sm:text-3xl self-center">ARVISEG</h3>
+        <h3 class="text-primary text-2xl sm:text-3xl self-center font-bold">
+          ARVISEG
+        </h3>
       </div>
     </section>
     <div
-      class="lines flex gap-4 flex-wrap justify-center sm:justify-between mt-10 pt-4 border-t border-red-500"
+      class="lines flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4"
     >
       <p>
         &copy; {new Date().getFullYear()} ARVISEG. Todos los derechos reservados.
       </p>
-      <p>Diseñado y desarrollado por</p>
+      <p>
+        Diseñado y desarrollado por <a
+          class="zentro"
+          href="https://www.instagram.com/zentro.ec_/">zentro.ec</a
+        >
+      </p>
     </div>
   </footer>
 </Layout>

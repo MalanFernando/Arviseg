@@ -1,6 +1,6 @@
 {
   "minibanner": {
-    "telf": "0987654321/(02)12345678 ",
+    "telf": "0987654321 / (02)12345678 ",
     "email": " arviseg@gmail.com",
     "address": "Av. Reina Victoria N13-95 y Colón. "
   },
@@ -10,7 +10,7 @@
     "subtitle": "Tu seguridad en nuestras manos",
     "description": "Servicio de vigilancia privada uniformada las 24 horas, los 365 días del año.",
     "cta": {
-      "text": "Solicitar Cotización",
+      "text": "Solicitar Cotización Ahora",
       "link": "/contact/"
     }
   },
@@ -28,15 +28,18 @@
   ],
   "about": {
     "title": "Quiénes Somos",
-    "description": "Somos una empresa especializada en seguridad integral, enfocada en proteger instalaciones, bienes y personas mediante soluciones confiables y personal altamente capacitado. Brindamos un servicio personalizado y eficiente."
+    "bigdescription": "Somos una empresa especializada en seguridad integral ",
+    "description": "Enfocada en proteger instalaciones, bienes y personas mediante soluciones confiables y personal altamente capacitado. Brindamos un servicio personalizado y eficiente."
   },
   "mission": {
     "title": "Misión",
-    "description": "Generar confianza mediante una atención personalizada, garantizando la seguridad de nuestros clientes y sus bienes."
+    "bigdescription": "Generar confianza a través de una relación cercana y una atención personalizada,",
+    "description": "garantizando la seguridad de nuestros clientes y sus bienes mediante servicios integrales de seguridad privada."
   },
   "vision": {
     "title": "Visión",
-    "description": "Ser referentes nacionales en seguridad privada en Ecuador, destacando por calidad, confiabilidad y crecimiento sostenido."
+    "bigdescription": "Ser referentes nacionales en seguridad privada en Ecuador, cumpliendo con las autorizaciones de los organismos de control.",
+    "description": "Buscamos el reconocimiento del mercado por nuestra calidad y confiabilidad, un crecimiento sostenido a corto y mediano plazo basado en un sistema integrado de seguridad y mejora continua."
   },
   "experience": {
     "label": "Nuestras operaciones cubren la mayor parte del Territorio Nacional con",

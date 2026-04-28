@@ -7,32 +7,32 @@
     {
       "title": "Seguridad Privada",
       "icon": "shield",
-      "description": "Servicio de vigilancia profesional para proteger instalaciones, bienes y personas."
+      "description": "Custodia y protección de personas, instalaciones y bienes (muebles e inmuebles). Prevención de incidentes: hurtos, robos, asaltos, sabotaje. Modalidades: 24 h, 12 h (día/noche), 8 h (día/noche)"
     },
     {
       "title": "Monitoreo Electrónico",
       "icon": "monitor",
-      "description": "Supervisión continua con respuesta inmediata ante eventos."
+      "description": "Instalación, mantenimiento y conexión de sistemas de alarmas (intrusión, incendio). Priorización de señales: asalto, robo, fuego, pánico. Soporte técnico continuo y reprogramaciones sin costo a la central de monitoreo"
     },
     {
       "title": "Seguridad VIP",
       "icon": "vip",
-      "description": "Protección personalizada para personas con altos requerimientos."
+      "description": "Acompañamiento y protección en traslados y eventos públicos o privados. Personal con técnicas evasivas y protocolos de reacción."
     },
     {
       "title": "Monitoreo CCTV",
       "icon": "camera",
-      "description": "Control mediante cámaras en tiempo real."
+      "description": "Diseño e instalación de videovigilancia con registro de eventos. Respuesta inmediata y verificación de incidentes. Supervisión motorizada con rondas disuasivas cuando aplica."
     },
     {
       "title": "Cercos Eléctricos",
       "icon": "fence",
-      "description": "Protección perimetral contra intrusiones."
+      "description": "Disuasión y contención de intrusiones en perímetros. Tendido de cables de acero y electrificador con pulsos controlados. Compatibles con sistemas de seguridad electrónica existentes."
     },
     {
       "title": "Custodia de Valores",
       "icon": "values",
-      "description": "Transporte y resguardo seguro de bienes."
+      "description": "Localización satelital y control de ruta. Esquemas de vehículo + conductor + escoltas según riesgo. Enfoque en entregas a tiempo y mitigación de siniestros"
     }
   ],
   "value_added": [

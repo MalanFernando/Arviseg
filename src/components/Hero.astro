@@ -7,8 +7,8 @@ import action from '../assets/images/guardAction.jpg';
 const { hero } = Astro.props;
 ---
 
-<section class="hero px-12 pb-16 pt-55 relative -top-20">
-  <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase">
+<section class="hero px-12 pb-16 pt-55 relative -top-18">
+  <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold uppercase">
     {hero.name}
   </h1>
   <h3
@@ -16,7 +16,7 @@ const { hero } = Astro.props;
   >
     {hero.title}
   </h3>
-  <p class="text-primary text-2xl mt-2">{hero.subtitle}</p>
-  <p class="mt-4">{hero.description}</p>
+  <p class="text-primary text-2xl mt-2 font-semibold">{hero.subtitle}</p>
+  <p class="mt-1 max-w-[350px]">{hero.description}</p>
   <ButtonToAction />
 </section>

@@ -5,14 +5,20 @@ import contact from '../data/contact.json';
 <form
   action="https://formsubmit.co/asistente@anvi-arviseg.com"
   method="POST"
-  class="bg-primary text-black w-full md:max-w-lg md:col-span-2 grid gap-8 p-8 justify-self-end"
+  class="bg-primary text-black w-full max-w-[680px] lg:col-span-2 grid gap-12 px-8 lg:px-12 py-12 lg:py-16 justify-self-center lg:justify-self-end"
 >
   <input type="hidden" name="_subject" value="Nuevo mensaje desde ARVISEG" />
   <input type="hidden" name="_captcha" value="true" />
   <input type="hidden" name="_template" value="table" />
 
-  <h4 class="max-w-[280px] text-2xl">{contact.form.title}</h4>
-  <p>{contact.form.description}</p>
+  <div>
+    <h4 class="max-w-[390px] text-2xl sm:text-3xl lg:text-4xl font-bold">
+      {contact.form.title}
+    </h4>
+    <p class="sm:font-semibold text-md sm:text-xl pt-4">
+      {contact.form.description}
+    </p>
+  </div>
   <div class="grid gap-6">
     <div class="grid sm:grid-cols-2 gap-4">
       <label for="nombre">

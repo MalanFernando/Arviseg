@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import services from '../data/services.json';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Picture } from 'astro:assets';
 import resguard from '../assets/images/resguard.jpg';
@@ -15,7 +14,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 ---
 
 <Layout title="ARVISEG servicios" pageId="services">
-  <section class="relative">
+  <section class="w-full relative grid">
     <Picture
       class="image-5 w-full max-h-[520px] min-h-[420px] -top-22 object-cover relative left-0 -z-10"
       src={landscape2}
@@ -23,29 +22,35 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       alt="team arviseg"
     />
     <div
-      class="grid gap-12 text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute"
     >
-      <h3 class="text-primary text-6xl">Servicios</h3>
+      <h3
+        class="text-primary text-4xl sm:text-5xl md:text-7xl font-bold uppercase"
+      >
+        Servicios
+      </h3>
       <ButtonToAction />
     </div>
   </section>
 
-  <section class="px-12 mb-20 mt-15 grid gap-12">
-    <div class="px-12 grid gap-12 justify-items-center">
-      <h4 class="text-primary uppercase text-2xl">Nuestros Servicios</h4>
-      <p class="max-w-[420px] text-xl text-center">
-        Hacemos que la seguridad de su negocio, hogar o bienestar personal sea
-        verdaderamente efectiva.
-      </p>
-    </div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <section class="px-12 mb-20 mt-15 grid gap-40">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div class="">
+        <h4 class="text-primary uppercase text-xl font-semibold">
+          Nuestros Servicios
+        </h4>
+        <p class="text-2xl mt-12 pr-4 font-semibold">
+          Hacemos que la seguridad de su negocio, hogar o bienestar personal sea
+          verdaderamente efectiva.
+        </p>
+      </div>
       {services.list.map((service) => <ServiceCard service={service} />)}
     </div>
   </section>
 
   <section class="py-8 grid gap-25">
     <div class="px-12 grid gap-12 justify-items-center">
-      <h4 class="text-primary uppercase text-2xl">Valor agregado</h4>
+      <h4 class="text-primary uppercase text-2xl font-bold">Valor agregado</h4>
       <p class="max-w-[480px]">
         Nuestros Guardias de Seguridad cuentan con el curso de 120 horas
         aprobado por el Ministerio del Interior de la República del Ecuador
@@ -60,7 +65,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         alt="team arviseg"
       />
       <article
-        class="bg-primary text-black max-w-[740px] 2xl:max-w-[820px] p-8 mx-4 sm:mx-8 lg:mx-12 grid gap-2 justify-self-end relative -top-10 sm:-top-20 md:-top-45"
+        class="bg-primary text-black max-w-[740px] 2xl:max-w-[820px] px-8 sm:px-10 py-8 mx-4 sm:mx-8 lg:mx-12 grid gap-2 justify-self-end relative -top-10 sm:-top-20 md:-top-45"
       >
         {
           services.value_added.map((value) => (
@@ -81,7 +86,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         formats={['png']}
         alt="cic logo certificacion"
       />
-      <h4 class="text-primary uppercase text-2xl">Certificaciones</h4>
+      <h4 class="text-primary uppercase text-2xl font-bold">Certificaciones</h4>
       <p class="max-w-[480px] text-center">
         ARVISEG CIA. LTDA, ha sido evaluado, aprobado con respecto a los
         requisitos especificados y certificado según las normas internacionales

@@ -4,10 +4,14 @@ import { Picture } from 'astro:assets';
 import logo from '../assets/logos/logo-arviseg.png';
 import SocialIcons from './SocialIcons.astro';
 import ContactsList from './ContactsList.astro';
+
+const isHomePage = Astro.url.pathname === '/';
+const homeHref = isHomePage ? '#home' : '/#home';
+const aboutHref = isHomePage ? '#about' : '/#about';
 ---
 
 <footer class="lines px-12 pt-12 pb-4 mt-20">
-  <p class="text-primary max-w-[220px] text-xl sm:text-2xl">
+  <p class="text-primary max-w-[220px] text-xl sm:text-2xl font-semibold">
     Tu seguridad en nuestras manos
   </p>
   <section
@@ -15,31 +19,43 @@ import ContactsList from './ContactsList.astro';
   >
     <div class="h-fit flex items-start gap-4">
       <Picture
-        class="size-16"
+        class="size-14"
         src={logo}
         formats={['png']}
         alt="logo arviseg"
       />
-      <h3 class="text-primary text-2xl sm:text-3xl self-center">ARVISEG</h3>
+      <h3 class="text-primary text-2xl sm:text-3xl self-center font-bold">
+        ARVISEG
+      </h3>
     </div>
     <div class="flex flex-wrap justify-between gap-8 items-start">
       <div class="grid gap-4 max-w-[280px]">
-        <h4 class="text-primary uppercase">Direccion</h4>
+        <h4 class="text-primary uppercase font-semibold">Direccion</h4>
         <p>
           Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
         </p>
       </div>
       <div class="grid gap-4">
-        <h4 class="text-primary uppercase">Redes</h4>
+        <h4 class="text-primary uppercase font-semibold">Redes</h4>
         <SocialIcons />
       </div>
     </div>
     <ContactsList />
     <div class="grid gap-4">
-      <h4 class="text-primary uppercase">Enlaces</h4>
+      <h4 class="text-primary uppercase font-semibold">Enlaces</h4>
       <nav class="w-fit grid gap-2">
-        <a href="/#">Inicio</a>
-        <a href="/#about">Nosotros</a>
+        <a
+          href={homeHref}
+          data-scroll-target="home"
+          onclick="return window.__smoothNavigate ? window.__smoothNavigate('home') : true;"
+          >Inicio</a
+        >
+        <a
+          href={aboutHref}
+          data-scroll-target="about"
+          onclick="return window.__smoothNavigate ? window.__smoothNavigate('about') : true;"
+          >Nosotros</a
+        >
         <a href="/services/">Servicios</a>
         <a href="/contact/">Contacto</a>
       </nav>

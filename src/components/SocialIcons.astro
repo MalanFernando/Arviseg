@@ -1,5 +1,4 @@
 ---
-import { url } from 'astro:schema';
 import Facebook from '../icons/socialMedia/facebook.svg';
 import Instagram from '../icons/socialMedia/instagram.svg';
 import Twitter from '../icons/socialMedia/twitter.svg';
@@ -22,15 +21,16 @@ const socialIcons = [
 <div>
   <ul class="flex gap-4 relative z-10">
     {
-      socialIcons.map((icon) => (
+      socialIcons.map(({ name, component: Icon, url }) => (
         <li>
           <a
             class="social-icons"
-            href={icon.url}
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={name}
           >
-            <icon.component class="social-svg" />
+            <Icon class="social-svg" />
           </a>
         </li>
       ))
