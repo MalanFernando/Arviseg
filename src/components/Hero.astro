@@ -8,15 +8,15 @@ const { hero } = Astro.props;
 ---
 
 <section class="hero px-12 pb-16 pt-55 relative -top-18">
-  <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold uppercase">
+  <h1 class="fade-up text-5xl sm:text-6xl md:text-8xl font-bold uppercase">
     {hero.name}
   </h1>
   <h3
-    class="max-w-[260px] sm:max-w-[360px] text-2xl sm:text-3xl md:text-4xl font-bold mt-2"
+    class="fade-up delay-1 max-w-[260px] sm:max-w-[360px] text-2xl sm:text-3xl md:text-4xl font-bold mt-2"
   >
     {hero.title}
   </h3>
-  <p class="text-primary text-2xl mt-2 font-semibold">{hero.subtitle}</p>
-  <p class="mt-1 max-w-[350px]">{hero.description}</p>
+  <p class="fade-up delay-2 text-primary text-2xl mt-2 font-semibold">{hero.subtitle}</p>
+  <p class="fade-up delay-3 mt-1 max-w-[350px]">{hero.description}</p>
   <ButtonToAction />
 </section>

@@ -21,15 +21,15 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 <Layout title="ARVISEG" pageId="home">
   <Hero hero={home.hero} />
 
-  <section class="mb-30 mt-15 grid gap-12">
+  <section id="clientes" class="mb-30 mt-15 grid gap-12">
     <p
-      class="max-w-[450px] px-12 text-2xl text-center justify-self-center font-semibold"
+      class="fade-up max-w-[450px] px-12 text-2xl text-center justify-self-center font-semibold"
     >
       Oferecemos nuestros servicios a una variedad de clientes.
     </p>
 
     <!-- Carrusel infinito -->
-    <div class="carousel-container overflow-hidden">
+    <div class="fade-up carousel-container overflow-hidden">
       <div class="carousel-track flex gap-16 px-8">
         <!-- Primera copia de las imagenes -->
         {
@@ -52,39 +52,46 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       </div>
     </div>
   </section>
-  <section class="px-12 py-8 grid gap-12 m-auto">
+  <section id="serv" class="px-12 py-8 grid gap-12 m-auto">
     <h3
-      class="text-primary text-2xl w-40 text-center justify-self-center font-semibold"
+      class="fade-up text-primary text-2xl w-40 text-center justify-self-center font-semibold"
     >
       NUESTROS SERVICIOS
     </h3>
     <div class="max-w-[1000px] flex flex-wrap gap-8 justify-center m-auto">
       {
-        services.list.map((service) => (
-          <>
-            <div class="services-content justify-items-center text-center">
-              <div class="flex w-[60px]">
-                <Icon
-                  name={
-                    service.icon as
-                      | 'shield'
-                      | 'monitor'
-                      | 'vip'
-                      | 'camera'
-                      | 'fence'
-                      | 'values'
-                  }
-                />
+        services.list.map((service, i) => {
+          const delayClass =
+            i < 4 ? `delay-${i + 1}` : `delay-${Math.min(i, 4)}`;
+          return (
+            <>
+              <div
+                id="serv-icons"
+                class={`fade-up ${delayClass} services-content justify-items-center text-center`}
+              >
+                <div class="flex w-[60px]">
+                  <Icon
+                    name={
+                      service.icon as
+                        | 'shield'
+                        | 'monitor'
+                        | 'vip'
+                        | 'camera'
+                        | 'fence'
+                        | 'values'
+                    }
+                  />
+                </div>
+                <h3 class="text-lg  mt-3">{service.title}</h3>
               </div>
-              <h3 class="text-lg  mt-3">{service.title}</h3>
-            </div>
-          </>
-        ))
+            </>
+          );
+        })
       }
     </div>
     <a
       href="/services/"
-      class="bg-primary action-hover text-dark py-2 px-4 mt-8 justify-self-center"
+      class="fade-up bg-primary action-hover text-dark py-2 px-4 mt-8 justify-self-center"
       >Conocer más</a
     >
   </section>
@@ -96,20 +103,20 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <Ecuador />
     <article class="abt relative grid gap-12">
       <Picture
-        class="image-1 w-full max-w-[620px] justify-self-center sm:justify-self-end sm:relative lg:top-20"
+        class="fade-up image-1 w-full max-w-[620px] justify-self-center sm:justify-self-end sm:relative lg:top-20"
         src={image1}
         formats={['jpg']}
         alt="team arviseg"
       />
       <div class="grid gap-16 max-w-[450px]">
-        <h3 class="text-primary uppercase text-2xl font-semibold">
+        <h3 class="fade-up text-primary uppercase text-2xl font-semibold">
           {home.about.title}
         </h3>
         <div>
-          <p class="text-2xl font-semibold pb-2 max-w-[320px]">
+          <p class="fade-up text-2xl font-semibold pb-2 max-w-[320px]">
             {home.about.bigdescription}
           </p>
-          <p>{home.about.description}</p>
+          <p class="fade-up">{home.about.description}</p>
         </div>
       </div>
     </article>
@@ -117,64 +124,69 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       class="abt grid gap-12 sm:gap-8 relative lg:flex lg:flex-row-reverse lg:justify-between"
     >
       <div class="grid gap-12 max-w-[380px] justify-self-end">
-        <h3 class="text-primary uppercase text-4xl font-bold">
+        <h3 class="fade-up text-primary uppercase text-4xl font-bold">
           {home.mission.title}
         </h3>
         <div>
-          <p class="text-2xl font-semibold">{home.mission.bigdescription}</p>
-          <p>{home.mission.description}</p>
+          <p class="fade-up text-2xl font-semibold">
+            {home.mission.bigdescription}
+          </p>
+          <p class="fade-up">{home.mission.description}</p>
         </div>
       </div>
       <Picture
-        class="image-2 w-full max-w-[420px] relative md:top-10"
+        class="fade-up image-2 w-full max-w-[420px] relative md:top-10"
         src={image2}
         formats={['jpg']}
         alt="car arviseg"
       />
     </article>
     <div class="grid gap-16 md:mt-8 max-w-[420px]">
-      <h3 class="text-primary uppercase text-4xl font-bold">
+      <h3 class="fade-up text-primary uppercase text-4xl font-bold">
         {home.vision.title}
       </h3>
       <div>
-        <p class="text-2xl font-semibold pb-2">{home.vision.bigdescription}</p>
-        <p>{home.vision.description}</p>
+        <p class="fade-up text-2xl font-semibold pb-2">
+          {home.vision.bigdescription}
+        </p>
+        <p class="fade-up">{home.vision.description}</p>
       </div>
     </div>
     <article
       class="abt grid justify-center lg:justify-end relative lg:-top-20 xl:-top-30"
     >
       <Picture
-        class="image-3 w-full max-w-[580px] lg:mr-15"
+        class="fade-up image-3 w-full max-w-[580px] lg:mr-15"
         src={image3}
         formats={['jpg']}
         alt="uniform arviseg"
       />
       <div
-        class="bg-primary text-dark max-w-[400px] sm:max-w-[490px] justify-self-center lg:justify-self-start lg:-left-30 text-center relative bottom-10 px-6 py-4"
+        id="experience-label"
+        class="fade-up bg-primary text-dark max-w-[400px] sm:max-w-[490px] justify-self-center lg:justify-self-start lg:-left-30 text-center relative bottom-10 px-6 py-4"
       >
-        <p>{home.experience.label}</p>
-        <p class="text-2xl font-bold">{home.experience.years}</p>
+        <p class="fade-up">{home.experience.label}</p>
+        <p class="fade-up text-2xl font-bold">{home.experience.years}</p>
       </div>
     </article>
   </section>
 
-  <section class="grid text-center gap-12">
+  <section id="values" class="grid text-center gap-12">
     <div class="relative grid justify-items-center">
       <Picture
-        class="image-4 w-full max-w-[1024px] min-h-[250px] object-cover"
+        class="fade-up image-4 w-full max-w-[1024px] min-h-[250px] object-cover"
         src={image4}
         formats={['jpg']}
         alt="full team arviseg"
       />
-      <div class="absolute bottom-6">
+      <div class="absolute bottom-9">
         <ButtonToAction />
       </div>
     </div>
 
     <div class="grid gap-12">
       <h3
-        class="text-primary uppercase text-3xl w-[220px] justify-self-center font-bold"
+        class="fade-up text-primary uppercase text-3xl w-[220px] justify-self-center font-bold"
       >
         Valores Institucionales
       </h3>
@@ -183,3 +195,19 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
   <Footer />
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+</script>

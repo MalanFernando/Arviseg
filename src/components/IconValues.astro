@@ -26,10 +26,11 @@ interface Props {
 
 <div class="flex flex-wrap gap-8 justify-evenly px-6 mt-8">
   {
-    home.values.list.map((value: { title: string; icon: string }) => {
+    home.values.list.map((value: { title: string; icon: string }, i: number) => {
       const ValueIcon = icons[value.icon as IconName];
+      const delayClass = i < 3 ? `delay-${i + 1}` : `delay-${Math.min(i, 4)}`;
       return (
-        <div class="values-content justify-items-center px-4 gap-5">
+        <div class={`fade-up ${delayClass} values-content justify-items-center px-4 gap-5`}>
           <div class="w-9 sm:w-10">
             {ValueIcon && <ValueIcon class={value.title} />}
           </div>
