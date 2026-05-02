@@ -25,21 +25,21 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute"
     >
       <h3
-        class="text-primary text-4xl sm:text-5xl md:text-7xl font-bold uppercase"
+        class="fade-up text-primary text-4xl sm:text-5xl md:text-7xl font-bold uppercase"
       >
         Servicios
       </h3>
-      <ButtonToAction />
+      <ButtonToAction className="delay-1" />
     </div>
   </section>
 
-  <section class="px-12 mb-20 mt-15 grid gap-40">
+  <section id="services-section" class="px-12 mb-20 mt-15 grid gap-40">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
       <div class="">
-        <h4 class="text-primary uppercase text-xl font-semibold">
+        <h4 class="fade-up text-primary uppercase text-xl font-semibold">
           Nuestros Servicios
         </h4>
-        <p class="text-2xl mt-12 pr-4 font-semibold">
+        <p class="fade-up delay-1 text-2xl mt-12 pr-4 font-semibold">
           Hacemos que la seguridad de su negocio, hogar o bienestar personal sea
           verdaderamente efectiva.
         </p>
@@ -48,10 +48,10 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     </div>
   </section>
 
-  <section class="py-8 grid gap-25">
+  <section id="value-add-section" class="py-8 grid gap-25">
     <div class="px-12 grid gap-12 justify-items-center">
-      <h4 class="text-primary uppercase text-2xl font-bold">Valor agregado</h4>
-      <p class="max-w-[480px]">
+      <h4 class="fade-up text-primary uppercase text-2xl font-bold">Valor agregado</h4>
+      <p class="fade-up delay-1 max-w-[480px]">
         Nuestros Guardias de Seguridad cuentan con el curso de 120 horas
         aprobado por el Ministerio del Interior de la República del Ecuador
       </p>
@@ -59,17 +59,18 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 
     <div class="relative">
       <Picture
-        class="image-6 w-full max-w-[760px] justify-self-center sm:justify-self-start lg:ml-12"
+        class="fade-up image-6 w-full max-w-[760px] justify-self-center sm:justify-self-start lg:ml-12"
         src={resguard}
         formats={['jpg']}
         alt="team arviseg"
       />
       <article
-        class="bg-primary text-black max-w-[740px] 2xl:max-w-[820px] px-8 sm:px-10 py-8 mx-4 sm:mx-8 lg:mx-12 grid gap-2 justify-self-end relative -top-10 sm:-top-20 md:-top-45"
+        id="services-list"
+        class="fade-up delay-1 bg-primary text-black max-w-[740px] 2xl:max-w-[820px] px-8 sm:px-10 py-8 mx-4 sm:mx-8 lg:mx-12 grid gap-2 justify-self-end relative -top-10 sm:-top-20 md:-top-45"
       >
         {
           services.value_added.map((value) => (
-            <div class="flex items-start gap-4">
+            <div class="fade-in flex items-start gap-4">
               <p class="max-w-[610px]">&middot; {value}</p>
             </div>
           ))
@@ -78,16 +79,16 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     </div>
   </section>
 
-  <section class="relative px-12 sm:-top-10 md:-top-30">
+  <section id="certf" class="relative px-12 sm:-top-10 md:-top-30">
     <div class="px-12 grid gap-12 justify-items-center">
       <Picture
-        class="relative sm:left-40 sm:top-25 sm:rotate-10"
+        class="fade-up relative sm:left-40 sm:top-25 sm:rotate-10"
         src={cic}
         formats={['png']}
         alt="cic logo certificacion"
       />
-      <h4 class="text-primary uppercase text-2xl font-bold">Certificaciones</h4>
-      <p class="max-w-[480px] text-center">
+      <h4 class="fade-up delay-1 text-primary uppercase text-2xl font-bold">Certificaciones</h4>
+      <p class="fade-up delay-2 max-w-[480px] text-center">
         ARVISEG CIA. LTDA, ha sido evaluado, aprobado con respecto a los
         requisitos especificados y certificado según las normas internacionales
       </p>
@@ -95,7 +96,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <div class="flex flex-wrap gap-12 mt-12 justify-center">
       {
         services.certifications.map((certification) => (
-          <div class="flex p-4 text-xl">
+          <div class="fade-up delay-3 flex p-4 text-xl">
             <p>{certification}</p>
           </div>
         ))
@@ -104,3 +105,19 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
   <Footer />
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.fade-up, .fade-in').forEach((el) => observer.observe(el));
+</script>

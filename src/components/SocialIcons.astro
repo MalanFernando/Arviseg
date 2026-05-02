@@ -16,13 +16,15 @@ const socialIcons = [
   },
   { name: 'Twitter', component: Twitter, url: 'https://twitter.com/arviseg' }
 ];
+
+const { animate = false } = Astro.props;
 ---
 
 <div>
   <ul class="flex gap-4 relative z-10">
     {
-      socialIcons.map(({ name, component: Icon, url }) => (
-        <li>
+      socialIcons.map(({ name, component: Icon, url }, i) => (
+        <li class={animate ? `fade-up delay-${i + 1}` : ''}>
           <a
             class="social-icons"
             href={url}
