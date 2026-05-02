@@ -119,5 +119,5 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     { threshold: 0.15 }
   );
 
-  document.querySelectorAll('.fade-up, .fade-in').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.fade-up, .fade-in, .fade-in-slow, .slide-left, .fade-down').forEach((el) => observer.observe(el));
 </script>

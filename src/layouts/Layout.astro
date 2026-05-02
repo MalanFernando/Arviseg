@@ -15,13 +15,18 @@ const { pageId, title = 'Arviseg' } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      if (sessionStorage.getItem('arviseg-home-animated')) {
+        document.documentElement.classList.add('anim-done');
+      }
+    </script>
   </head>
   <body id={pageId} class="max-w-[1440px] m-auto">
     <div class="content-buttons grid gap-4">
       <ButtonUp />
       <WhatsappButton />
     </div>
-    <Header />
+    <Header pageId={pageId} />
     <slot />
 
     <script>

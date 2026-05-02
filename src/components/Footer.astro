@@ -11,13 +11,13 @@ const aboutHref = isHomePage ? '#about' : '/#about';
 ---
 
 <footer class="lines px-12 pt-12 pb-4 mt-20">
-  <p class="text-primary max-w-[220px] text-xl sm:text-2xl font-semibold">
+  <p class="fade-up text-primary max-w-[220px] text-xl sm:text-2xl font-semibold">
     Tu seguridad en nuestras manos
   </p>
   <section
     class="grid sm:grid-cols-2 lg:grid-cols-4 justify-between gap-12 mb-4 pt-8"
   >
-    <div class="h-fit flex items-start gap-4">
+    <div class="fade-up delay-1 h-fit flex items-start gap-4">
       <Picture
         class="size-14"
         src={logo}
@@ -28,7 +28,7 @@ const aboutHref = isHomePage ? '#about' : '/#about';
         ARVISEG
       </h3>
     </div>
-    <div class="flex flex-wrap justify-between gap-8 items-start">
+    <div class="fade-up delay-2 flex flex-wrap justify-between gap-8 items-start">
       <div class="grid gap-4 max-w-[280px]">
         <h4 class="text-primary uppercase font-semibold">Direccion</h4>
         <p>
@@ -40,8 +40,10 @@ const aboutHref = isHomePage ? '#about' : '/#about';
         <SocialIcons />
       </div>
     </div>
-    <ContactsList />
-    <div class="grid gap-4">
+    <div class="fade-up delay-3">
+      <ContactsList />
+    </div>
+    <div class="fade-up delay-4 grid gap-4">
       <h4 class="text-primary uppercase font-semibold">Enlaces</h4>
       <nav class="w-fit grid gap-2">
         <a
@@ -58,7 +60,7 @@ const aboutHref = isHomePage ? '#about' : '/#about';
     </div>
   </section>
   <div
-    class="lines flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4"
+    class="fade-in lines flex gap-4 flex-wrap justify-center sm:justify-between mt-14 pt-4"
   >
     <p>
       &copy; {new Date().getFullYear()} ARVISEG. Todos los derechos reservados.
