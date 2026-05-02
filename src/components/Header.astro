@@ -18,8 +18,6 @@ const aboutHref = '/#about';
   >
     <a
       href={homeHref}
-      data-scroll-target="home"
-      onclick="return window.__smoothNavigate ? window.__smoothNavigate('home') : true;"
       ><Picture
         class="size-14"
         src={logo}
@@ -30,20 +28,16 @@ const aboutHref = '/#about';
 
     <!-- Links escritorio -->
     <nav class="desk-nav hidden md:flex gap-4">
-      <a
-        class="p-2 nav-link nav-home"
-        href={homeHref}
-        data-scroll-target="home"
-        onclick="return window.__smoothNavigate ? window.__smoothNavigate('home') : true;"
-        >Inicio</a
-      >
-      <a
-        class="p-2 nav-link nav-about"
-        href={aboutHref}
-        data-scroll-target="about"
-        onclick="return window.__smoothNavigate ? window.__smoothNavigate('about') : true;"
-        >Nosotros</a
-      >
+        <a
+          class="p-2 nav-link nav-home"
+          href={homeHref}
+          >Inicio</a
+        >
+        <a
+          class="p-2 nav-link nav-about"
+          href={aboutHref}
+          >Nosotros</a
+        >
       <a class="p-2 nav-link nav-services" href="/services/">Servicios</a>
       <a class="p-2 nav-link nav-contact" href="/contact/">Contacto</a>
     </nav>
@@ -95,20 +89,16 @@ const aboutHref = '/#about';
     class="menu hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex-col"
   >
     <nav class="lines2 flex flex-col">
-      <a
-        class="menu-effect p-4 pl-12 nav-link nav-home"
-        href={homeHref}
-        data-scroll-target="home"
-        onclick="return window.__smoothNavigate ? window.__smoothNavigate('home') : true;"
-        >Inicio</a
-      >
-      <a
-        class="menu-effect p-4 pl-12 nav-link nav-about"
-        href={aboutHref}
-        data-scroll-target="about"
-        onclick="return window.__smoothNavigate ? window.__smoothNavigate('about') : true;"
-        >Nosotros</a
-      >
+        <a
+          class="menu-effect p-4 pl-12 nav-link nav-home"
+          href={homeHref}
+          >Inicio</a
+        >
+        <a
+          class="menu-effect p-4 pl-12 nav-link nav-about"
+          href={aboutHref}
+          >Nosotros</a
+        >
       <a class="menu-effect p-4 pl-12 nav-link nav-services" href="/services/"
         >Servicios</a
       >

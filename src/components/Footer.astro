@@ -46,14 +46,10 @@ const aboutHref = isHomePage ? '#about' : '/#about';
       <nav class="w-fit grid gap-2">
         <a
           href={homeHref}
-          data-scroll-target="home"
-          onclick="return window.__smoothNavigate ? window.__smoothNavigate('home') : true;"
           >Inicio</a
         >
         <a
           href={aboutHref}
-          data-scroll-target="about"
-          onclick="return window.__smoothNavigate ? window.__smoothNavigate('about') : true;"
           >Nosotros</a
         >
         <a href="/services/">Servicios</a>

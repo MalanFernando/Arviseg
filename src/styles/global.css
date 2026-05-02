@@ -111,9 +111,6 @@
 }
 
 html {
-  scroll-padding-top: 80px;
-  /* Compensa el header */
-  scroll-behavior: smooth;
   font-family: var(--font-family);
 }
 
@@ -123,7 +120,6 @@ body {
   background-color: var(--color-background);
   overflow-x: hidden;
   font-family: var(--font-family);
-  scroll-behavior: smooth;
 }
 
 nav>a {
@@ -273,6 +269,12 @@ body#contact .nav-contact {
   background-image: linear-gradient(rgba(0, 0, 0, 0.795), rgba(19, 11, 26, 0.705)), url("../assets/images/guardAction.jpg");
   background-size: cover;
   background-blend-mode: luminosity;
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
 }
 
 /* Images */
@@ -280,18 +282,44 @@ body#contact .nav-contact {
 .image-2,
 .image-3,
 .image-4,
-.image-5,
 .image-6 {
-  filter: brightness(0.7) contrast(1);
+  filter: brightness(0.6) contrast(1);
   mix-blend-mode: luminosity;
   transition: var(--transition-default);
+  /* Máscara para desvanecer los 4 bordes */
+  mask-image:
+    linear-gradient(to bottom, black calc(95% - 25px), transparent 100%),
+    linear-gradient(to top, black calc(95% - 25px), transparent 100%),
+    linear-gradient(to right, black calc(100% - 8px), transparent 100%),
+    linear-gradient(to left, black calc(100% - 8px), transparent 100%);
+  -webkit-mask-image:
+    linear-gradient(to bottom, black calc(95% - 25px), transparent 100%),
+    linear-gradient(to top, black calc(95% - 25px), transparent 100%),
+    linear-gradient(to right, black calc(100% - 8px), transparent 100%),
+    linear-gradient(to left, black calc(100% - 8px), transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+.image-5 {
+  filter: brightness(0.6) contrast(1);
+  mix-blend-mode: luminosity;
+  transition: var(--transition-default);
+  /* Máscara para desvanecer los 4 bordes */
+  mask-image:
+    linear-gradient(to bottom, black calc(50% - 50px), transparent 100%),
+    linear-gradient(to top, black calc(95% - 80px), transparent 100%);
+  -webkit-mask-image:
+    linear-gradient(to bottom, black calc(50% - 50px), transparent 100%),
+    linear-gradient(to top, black calc(95% - 80px), transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
 }
 
 .image-1:hover,
 .image-2:hover,
 .image-3:hover,
 .image-4:hover,
-.image-5:hover,
 .image-6:hover {
   filter: none;
   mix-blend-mode: normal;
@@ -300,7 +328,6 @@ body#contact .nav-contact {
 .seccion-ecuador-v2 {
   position: relative;
   overflow: hidden;
-  z-index: 1;
 }
 
 /* Elemento independiente para el mapa */
@@ -325,7 +352,6 @@ body#contact .nav-contact {
 
 .abt {
   position: relative;
-  z-index: 2;
 }
 
 /* Cards */

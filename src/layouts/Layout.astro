@@ -25,56 +25,6 @@ const { pageId, title = 'Arviseg' } = Astro.props;
     <slot />
 
     <script>
-      const smoothState = {
-        hasAppliedInitialScroll: false
-      };
-
-      function getScrollPaddingTop() {
-        const value = getComputedStyle(document.documentElement).scrollPaddingTop;
-        const parsed = Number.parseFloat(value);
-        return Number.isFinite(parsed) ? parsed : 0;
-      }
-
-      function easeInOutCubic(progress) {
-        return progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      }
-
-      function animatedScrollTo(targetY) {
-        const startY = window.scrollY;
-        const maxY = document.documentElement.scrollHeight - window.innerHeight;
-        const clampedTargetY = Math.max(0, Math.min(targetY, maxY));
-        const distance = clampedTargetY - startY;
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          window.scrollTo(0, clampedTargetY);
-          return;
-        }
-
-        if (Math.abs(distance) < 1) {
-          window.scrollTo(0, clampedTargetY);
-          return;
-        }
-
-        const duration = Math.min(2400, Math.max(1200, Math.abs(distance) * 1.2));
-        const startTime = performance.now();
-
-        const step = (currentTime) => {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = easeInOutCubic(progress);
-
-          window.scrollTo(0, startY + distance * eased);
-
-          if (progress < 1) {
-            window.requestAnimationFrame(step);
-          }
-        };
-
-        window.requestAnimationFrame(step);
-      }
-
       function closeMobileMenu() {
         const menu = document.getElementById('mobile-menu');
         const mainBar = document.getElementById('main-bar');
@@ -93,90 +43,9 @@ const { pageId, title = 'Arviseg' } = Astro.props;
         }
       }
 
-      function smoothScrollToSection(sectionId) {
-        if (sectionId === 'home') {
-          animatedScrollTo(0);
-          return;
-        }
-
-        const section = document.getElementById(sectionId);
-        if (!section) return;
-
-        const targetY =
-          section.getBoundingClientRect().top +
-          window.scrollY -
-          getScrollPaddingTop();
-
-        animatedScrollTo(targetY);
-      }
-
-      function navigateWithSmoothScroll(sectionId) {
-        if (!sectionId) return true;
-
-        if (window.location.pathname === '/') {
-          smoothScrollToSection(sectionId);
-          const nextPath = sectionId === 'home' ? '/' : `/#${sectionId}`;
-          history.replaceState(null, '', nextPath);
-          closeMobileMenu();
-          return false;
-        }
-
-        try {
-          sessionStorage.setItem('pendingScrollTarget', sectionId);
-        } catch {
-          // ignore storage restrictions
-        }
-
-        window.location.assign('/');
-        return false;
-      }
-
-      function applyPendingScroll() {
-        if (smoothState.hasAppliedInitialScroll || window.location.pathname !== '/') {
-          return;
-        }
-
-        let pendingTarget = null;
-
-        try {
-          pendingTarget = sessionStorage.getItem('pendingScrollTarget');
-        } catch {
-          pendingTarget = null;
-        }
-
-        const hashTarget = window.location.hash.replace('#', '');
-        const sectionId = pendingTarget || hashTarget;
-        if (!sectionId) return;
-
-        smoothState.hasAppliedInitialScroll = true;
-
-        if (pendingTarget) {
-          try {
-            sessionStorage.removeItem('pendingScrollTarget');
-          } catch {
-            // ignore storage restrictions
-          }
-        }
-
-        history.replaceState(null, '', '/');
-
-        if (!pendingTarget && hashTarget) {
-          window.scrollTo(0, 0);
-        }
-
-        window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(() => {
-            smoothScrollToSection(sectionId);
-            const nextPath = sectionId === 'home' ? '/' : `/#${sectionId}`;
-            history.replaceState(null, '', nextPath);
-          });
-        });
-      }
-
-      window.__smoothNavigate = navigateWithSmoothScroll;
-
-      window.addEventListener('pageshow', applyPendingScroll);
-      applyPendingScroll();
+      window.addEventListener('hashchange', () => {
+        closeMobileMenu();
+      });
     </script>
   </body>
 </html>
