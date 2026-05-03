@@ -21,11 +21,12 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 <Layout title="ARVISEG" pageId="home">
   <Hero hero={home.hero} />
 
-  <section id="clientes" class="mb-30 mt-15 grid gap-12">
+  <section id="clientes" class="mb-30 mt-15 grid gap-16">
     <p
-      class="fade-up max-w-[450px] px-12 text-2xl text-center justify-self-center font-semibold"
+      class="fade-up text-color-hover max-w-[520px] px-12 text-3xl sm:text-4xl text-center justify-self-center font-bold"
     >
-      Oferecemos nuestros servicios a una variedad de clientes.
+      <span class="font-normal text-color">Oferecemos nuestros servicios</span> a
+      una variedad de clientes.
     </p>
 
     <!-- Carrusel infinito -->
@@ -54,9 +55,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
   <section id="serv" class="px-12 py-8 grid gap-12 m-auto">
     <h3
-      class="fade-up text-primary text-2xl w-40 text-center justify-self-center font-semibold"
+      class="fade-up text-xl max-w-40 text-center justify-self-center font-semibold"
     >
-      NUESTROS SERVICIOS
+      NUESTROS <span class="text-4xl text-color-hover">SERVICIOS</span>
     </h3>
     <div class="max-w-[1000px] flex flex-wrap gap-8 justify-center m-auto">
       {
@@ -98,7 +99,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 
   <section
     id="about"
-    class="seccion-ecuador-v2 demo-svg px-12 py-8 my-12 grid gap-20"
+    class="seccion-ecuador-v2 demo-svg px-8 sm:px-12 py-8 my-12 grid gap-20"
   >
     <Ecuador />
     <article class="abt relative grid gap-12">
@@ -113,7 +114,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
           {home.about.title}
         </h3>
         <div>
-          <p class="fade-up text-2xl font-semibold pb-2 max-w-[320px]">
+          <p class="fade-up text-3xl font-semibold pb-2 max-w-[380px]">
             {home.about.bigdescription}
           </p>
           <p class="fade-up">{home.about.description}</p>
@@ -124,11 +125,11 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
       class="abt grid gap-12 sm:gap-8 relative lg:flex lg:flex-row-reverse lg:justify-between"
     >
       <div class="grid gap-12 max-w-[380px] justify-self-end">
-        <h3 class="fade-up text-primary uppercase text-4xl font-bold">
+        <h3 class="fade-up text-primary uppercase text-2xl font-semibold">
           {home.mission.title}
         </h3>
         <div>
-          <p class="fade-up text-2xl font-semibold">
+          <p class="fade-up text-3xl font-semibold">
             {home.mission.bigdescription}
           </p>
           <p class="fade-up">{home.mission.description}</p>
@@ -141,12 +142,12 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         alt="car arviseg"
       />
     </article>
-    <div class="grid gap-16 md:mt-8 max-w-[420px]">
-      <h3 class="fade-up text-primary uppercase text-4xl font-bold">
+    <div class="grid gap-16 md:mt-8 max-w-[450px]">
+      <h3 class="fade-up text-primary uppercase text-2xl font-semibold">
         {home.vision.title}
       </h3>
       <div>
-        <p class="fade-up text-2xl font-semibold pb-2">
+        <p class="fade-up text-3xl font-semibold pb-2">
           {home.vision.bigdescription}
         </p>
         <p class="fade-up">{home.vision.description}</p>
@@ -166,7 +167,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         class="fade-up bg-primary text-dark max-w-[400px] sm:max-w-[490px] justify-self-center lg:justify-self-start lg:-left-30 text-center relative bottom-10 px-6 py-4"
       >
         <p class="fade-up">{home.experience.label}</p>
-        <p class="fade-up text-2xl font-bold">{home.experience.years}</p>
+        <p class="fade-up text-3xl font-semibold">
+          <span class="text-4xl font-bold">+22 </span>{home.experience.years}
+        </p>
       </div>
     </article>
   </section>
@@ -186,9 +189,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 
     <div class="grid gap-12">
       <h3
-        class="fade-up text-primary uppercase text-3xl w-[220px] justify-self-center font-bold"
+        class="fade-up text-xl uppercase w-[220px] justify-self-center font-bold"
       >
-        Valores Institucionales
+        Valores <span class="text-3xl text-primary">Institucionales</span>
       </h3>
       <IconValues name="integrity" />
     </div>
@@ -209,5 +212,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     { threshold: 0.15 }
   );
 
-  document.querySelectorAll('.fade-up, .fade-in, .fade-in-slow, .slide-left, .fade-down').forEach((el) => observer.observe(el));
+  document
+    .querySelectorAll(
+      '.fade-up, .fade-in, .fade-in-slow, .slide-left, .fade-down'
+    )
+    .forEach((el) => observer.observe(el));
 </script>

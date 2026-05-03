@@ -24,19 +24,23 @@ interface Props {
 }
 ---
 
-<div class="flex flex-wrap gap-8 justify-evenly px-6 mt-8">
+<div class="flex flex-wrap gap-2 justify-evenly px-3 mt-8">
   {
-    home.values.list.map((value: { title: string; icon: string }, i: number) => {
-      const ValueIcon = icons[value.icon as IconName];
-      const delayClass = i < 3 ? `delay-${i + 1}` : `delay-${Math.min(i, 4)}`;
-      return (
-        <div class={`fade-up ${delayClass} values-content justify-items-center px-4 gap-5`}>
-          <div class="w-9 sm:w-10">
-            {ValueIcon && <ValueIcon class={value.title} />}
+    home.values.list.map(
+      (value: { title: string; icon: string }, i: number) => {
+        const ValueIcon = icons[value.icon as IconName];
+        const delayClass = i < 3 ? `delay-${i + 1}` : `delay-${Math.min(i, 4)}`;
+        return (
+          <div
+            class={`fade-up ${delayClass} values-content justify-items-center px-3 py-4 gap-5`}
+          >
+            <div class="w-9 sm:w-10">
+              {ValueIcon && <ValueIcon class={value.title} />}
+            </div>
+            <h4 class="text-md">{value.title}</h4>
           </div>
-          <h4 class="text-md">{value.title}</h4>
-        </div>
-      );
-    })
+        );
+      }
+    )
   }
 </div>

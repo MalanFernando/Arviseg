@@ -24,24 +24,29 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <div
       class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute"
     >
-      <h3
-        class="fade-up text-primary text-4xl sm:text-5xl md:text-7xl font-bold uppercase"
-      >
-        Servicios
-      </h3>
+      <div>
+        <span class="fade-up text-3xl uppercase font-bold">Nuestros</span>
+        <h3
+          class="fade-up text-primary text-4xl sm:text-5xl md:text-7xl font-bold uppercase"
+        >
+          Servicios
+        </h3>
+      </div>
       <ButtonToAction className="delay-1" />
     </div>
   </section>
 
-  <section id="services-section" class="px-12 mb-20 mt-15 grid gap-40">
+  <section id="services-section" class="px-8 sm:px-12 mb-20 mt-15 grid gap-40">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
       <div class="">
         <h4 class="fade-up text-primary uppercase text-xl font-semibold">
-          Nuestros Servicios
+          Que hacemos
         </h4>
-        <p class="fade-up delay-1 text-2xl mt-12 pr-4 font-semibold">
+        <p class="fade-up delay-1 text-3xl mt-12 pr-4">
           Hacemos que la seguridad de su negocio, hogar o bienestar personal sea
-          verdaderamente efectiva.
+          <span class="font-bold text-color-hover"
+            >verdaderamente efectiva.</span
+          >
         </p>
       </div>
       {services.list.map((service) => <ServiceCard service={service} />)}
@@ -49,11 +54,15 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
 
   <section id="value-add-section" class="py-8 grid gap-25">
-    <div class="px-12 grid gap-12 justify-items-center">
-      <h4 class="fade-up text-primary uppercase text-2xl font-bold">Valor agregado</h4>
-      <p class="fade-up delay-1 max-w-[480px]">
-        Nuestros Guardias de Seguridad cuentan con el curso de 120 horas
-        aprobado por el Ministerio del Interior de la República del Ecuador
+    <div class="px-12 grid gap-12 justify-items-center text-center">
+      <h4 class="fade-up max-w-[180px] uppercase text-2xl font-semibold">
+        Valor <span class="text-4xl text-primary">agregado</span>
+      </h4>
+      <p class="fade-up delay-1 text-2xl max-w-[560px] font-bold">
+        <span class="font-normal brightness-75"
+          >Nuestros Guardias de Seguridad cuentan con el</span
+        > curso de 120 horas aprobado por el Ministerio del Interior de la República
+        del Ecuador
       </p>
     </div>
 
@@ -79,24 +88,28 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     </div>
   </section>
 
-  <section id="certf" class="relative px-12 sm:-top-10 md:-top-30">
+  <section id="certf" class="relative px-4 sm:px-12 sm:-top-10 md:-top-30">
     <div class="px-12 grid gap-12 justify-items-center">
       <Picture
-        class="fade-up relative sm:left-40 sm:top-25 sm:rotate-10"
+        class="fade-up relative sm:left-48 sm:top-25 sm:rotate-8"
         src={cic}
         formats={['png']}
         alt="cic logo certificacion"
       />
-      <h4 class="fade-up delay-1 text-primary uppercase text-2xl font-bold">Certificaciones</h4>
-      <p class="fade-up delay-2 max-w-[480px] text-center">
+      <h4 class="fade-up delay-1 text-primary uppercase text-3xl font-bold">
+        Certificaciones
+      </h4>
+      <p class="fade-up delay-2 max-w-[520px] text-center text-xl">
         ARVISEG CIA. LTDA, ha sido evaluado, aprobado con respecto a los
-        requisitos especificados y certificado según las normas internacionales
+        requisitos especificados y <span class="font-bold text-color-hover"
+          >certificado según las normas internacionales</span
+        >
       </p>
     </div>
-    <div class="flex flex-wrap gap-12 mt-12 justify-center">
+    <div class="flex flex-wrap gap-12 mt-16 justify-center">
       {
         services.certifications.map((certification) => (
-          <div class="fade-up delay-3 flex p-4 text-xl">
+          <div class="bg-primary text-black fade-up delay-3 flex px-6 py-2 text-xl rounded-[90px]">
             <p>{certification}</p>
           </div>
         ))
@@ -119,5 +132,9 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     { threshold: 0.15 }
   );
 
-  document.querySelectorAll('.fade-up, .fade-in, .fade-in-slow, .slide-left, .fade-down').forEach((el) => observer.observe(el));
+  document
+    .querySelectorAll(
+      '.fade-up, .fade-in, .fade-in-slow, .slide-left, .fade-down'
+    )
+    .forEach((el) => observer.observe(el));
 </script>
