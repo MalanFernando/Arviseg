@@ -372,6 +372,19 @@ body#contact .nav-contact {
   outline: 8px solid var(--color-cards);
 }
 
+.cards:hover h3 {
+  color: var(--color-primary-hover);
+}
+
+.cards svg,
+.cards h3 {
+  transition: var(--transition-default);
+}
+
+.cards:hover svg {
+  transform: scale(105%);
+}
+
 /* Lines */
 .lines {
   border-top: 1px solid var(--color-lines);
