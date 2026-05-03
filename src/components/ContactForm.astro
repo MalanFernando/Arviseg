@@ -6,7 +6,9 @@ import contact from '../data/contact.json';
   action="https://formsubmit.co/asistente@anvi-arviseg.com"
   method="POST"
   class="bg-primary text-black w-full max-w-[680px] lg:col-span-2 grid gap-12 px-8 lg:px-12 py-12 lg:py-16 justify-self-center lg:justify-self-end"
+  aria-label="Formulario de contacto"
 >
+  <div aria-live="polite" class="sr-only" id="form-status"></div>
   <input type="hidden" name="_subject" value="Nuevo mensaje desde ARVISEG" />
   <input type="hidden" name="_captcha" value="true" />
   <input type="hidden" name="_template" value="table" />

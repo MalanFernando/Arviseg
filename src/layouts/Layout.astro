@@ -3,24 +3,62 @@ import ButtonUp from '../components/ButtonUp.astro';
 import Header from '../components/Header.astro';
 import WhatsappButton from '../components/WhatsappButton.astro';
 import '../styles/global.css';
-const { pageId, title = 'Arviseg' } = Astro.props;
+const { pageId, title = 'Arviseg', description = 'Empresa líder en seguridad privada y monitoreo electrónico en Ecuador' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://arviseg.com');
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="/logos/logo-arviseg.png" />
+    <meta property="og:locale" content="es_EC" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/logos/logo-arviseg.png" />
+
+    <meta name="robots" content="index, follow" />
+
     <script is:inline>
       if (sessionStorage.getItem('arviseg-home-animated')) {
         document.documentElement.classList.add('anim-done');
       }
     </script>
+
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        z-index: 9999;
+        padding: 0.75rem 1.5rem;
+        background: #fcd601;
+        color: #180b1a;
+        font-weight: bold;
+        border-radius: 0 0 0.5rem 0.5rem;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
   </head>
   <body id={pageId} class="max-w-[1440px] m-auto">
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
     <div class="cursor-flashlight"></div>
     <div class="custom-cursor"></div>
     <div class="content-buttons grid gap-4">
@@ -28,20 +66,29 @@ const { pageId, title = 'Arviseg' } = Astro.props;
       <WhatsappButton />
     </div>
     <Header />
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
 
     <script>
       const flashlight = document.querySelector('.cursor-flashlight');
       const cursor = document.querySelector('.custom-cursor');
 
+      let ticking = false;
       document.addEventListener('mousemove', (e) => {
-        if (flashlight) {
-          flashlight.style.setProperty('--cursor-x', e.clientX + 'px');
-          flashlight.style.setProperty('--cursor-y', e.clientY + 'px');
-        }
-        if (cursor) {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (flashlight) {
+              flashlight.style.setProperty('--cursor-x', e.clientX + 'px');
+              flashlight.style.setProperty('--cursor-y', e.clientY + 'px');
+            }
+            if (cursor) {
+              cursor.style.left = e.clientX + 'px';
+              cursor.style.top = e.clientY + 'px';
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       });
 

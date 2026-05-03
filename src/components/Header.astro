@@ -27,7 +27,7 @@ const aboutHref = '/#about';
         class="size-14"
         src={logo}
         formats={['png']}
-        alt="logo arviseg"
+        alt="ARVISEG - Seguridad Privada y Monitoreo Electrónico"
       /></a
     >
 
@@ -48,7 +48,7 @@ const aboutHref = '/#about';
       </a>
 
       <!-- Botón hamburguesa -->
-      <button id="menu-btn" class="md:hidden p-2">
+      <button id="menu-btn" class="md:hidden p-2" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación">
         <!-- Icono hamburguesa -->
         <svg
           id="hamburger"
@@ -56,6 +56,7 @@ const aboutHref = '/#about';
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <path
             stroke-linecap="round"
@@ -70,6 +71,7 @@ const aboutHref = '/#about';
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <path
             stroke-linecap="round"
@@ -121,6 +123,7 @@ const aboutHref = '/#about';
       hamburger.classList.remove('hidden');
       close.classList.add('hidden');
     }
+    btn?.setAttribute('aria-expanded', 'false');
   }
 
   function openMenu() {
@@ -132,6 +135,7 @@ const aboutHref = '/#about';
       hamburger.classList.add('hidden');
       close.classList.remove('hidden');
     }
+    btn?.setAttribute('aria-expanded', 'true');
   }
 
   if (btn && menu && hamburger && close) {

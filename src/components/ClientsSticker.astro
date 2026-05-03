@@ -1,4 +1,18 @@
 ---
+
+const altTexts = {
+  dacar: 'Logo de Dacar',
+  belcorp: 'Logo de Belcorp',
+  latienda: 'Logo de La Tienda',
+  launion: 'Logo de La Unión',
+  medu: 'Logo de Medu',
+  novocorp: 'Logo de Novocorp',
+  pinturas: 'Logo de Pinturas América',
+  santillana: 'Logo de Santillana',
+  transportes: 'Logo de Transportes',
+  hispa: 'Logo de Hispa'
+};
+
 import Dacar from '../assets/logos/logo-dacar.png';
 import Belcorp from '../assets/logos/logo-belcorp.png';
 import Latienda from '../assets/logos/logo-la-tienda.jpg';
@@ -33,6 +47,7 @@ interface Props {
 const { name, class: className } = Astro.props as Props;
 
 const image = images[name];
+const altText = altTexts[name];
 ---
 
-{image && <img src={image.src} alt={name} class={className} loading="lazy" />}
+{image && <img src={image.src} alt={altText} class={className} loading="lazy" />}
