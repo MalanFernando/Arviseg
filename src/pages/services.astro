@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { Picture } from 'astro:assets';
 import resguard from '../assets/images/resguard.jpg';
 import landscape2 from '../assets/images/landscape2.jpg';
+import service from '../assets/images/service.png';
 import cic from '../assets/logo-certificacion/cic-logo.png';
 import ClientsSticker from '../components/ClientsSticker.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -14,15 +15,14 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 ---
 
 <Layout title="ARVISEG servicios" pageId="services">
-  <section class="w-full relative grid">
-      <Picture
-        class="image-5 w-full max-h-[520px] min-h-[420px] -top-22 object-cover relative left-0 -z-10"
-        src={landscape2}
-        formats={['webp', 'jpg']}
-        alt="Paisaje corporativo ARVISEG"
-      />
+  <section id="serv-page" class="serv-slider relative grid">
+    <div class="serv-bg serv-bg-1" style={`--bg-url: url(${landscape2.src});`}>
+    </div>
+    <div class="serv-bg serv-bg-2" style={`--bg-url: url(${service.src});`}>
+    </div>
+
     <div
-      class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute"
+      class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute z-10"
     >
       <div>
         <span class="fade-up text-3xl uppercase font-bold">Nuestros</span>

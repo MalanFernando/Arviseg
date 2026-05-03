@@ -1,26 +1,36 @@
 ---
 import { Picture } from 'astro:assets';
 import ButtonToAction from './ButtonToAction.astro';
-import action from '../assets/images/guardAction.jpg';
+import bg1 from '../assets/images/guardAction.jpg';
+import bg2 from '../assets/images/guard2.png';
+import bg3 from '../assets/images/action.jpg';
 
-// components/Hero.astro
 const { hero } = Astro.props;
 ---
 
-<section class="hero px-8 sm:px-12 pb-16 pt-55 relative -top-18">
-  <h1
-    class="fade-up text-primary text-5xl sm:text-7xl md:text-8xl font-bold uppercase"
-  >
-    {hero.name}
-  </h1>
-  <h3
-    class="fade-up delay-1 max-w-[260px] sm:max-w-[360px] text-2xl sm:text-3xl md:text-4xl font-bold mt-2"
-  >
-    {hero.title}
-  </h3>
-  <p class="fade-up delay-2 text-color-hover text-2xl mt-2 font-semibold">
-    {hero.subtitle}
-  </p>
-  <p class="fade-up delay-3 mt-1 max-w-[350px]">{hero.description}</p>
-  <ButtonToAction />
+<section class="hero-slider relative -top-18">
+  <div class="hero-bg hero-bg-1" style={`--bg-url: url(${bg1.src});`}>
+  </div>
+  <div class="hero-bg hero-bg-2" style={`--bg-url: url(${bg2.src});`}>
+  </div>
+  <div class="hero-bg hero-bg-3" style={`--bg-url: url(${bg3.src});`}>
+  </div>
+
+  <div class="hero-content px-8 sm:px-12 pb-16 pt-55 relative z-10">
+    <h1
+      class="fade-up text-primary text-5xl sm:text-7xl md:text-8xl font-bold uppercase"
+    >
+      {hero.name}
+    </h1>
+    <h3
+      class="fade-up delay-1 max-w-[260px] sm:max-w-[360px] text-2xl sm:text-3xl md:text-4xl font-bold mt-2"
+    >
+      {hero.title}
+    </h3>
+    <p class="fade-up delay-2 text-color-hover text-2xl mt-2 font-semibold">
+      {hero.subtitle}
+    </p>
+    <p class="fade-up delay-3 mt-1 max-w-[350px]">{hero.description}</p>
+    <ButtonToAction />
+  </div>
 </section>
