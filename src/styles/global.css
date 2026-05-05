@@ -94,7 +94,7 @@
 
   /* Adicionales */
   /* Hover para botones primarios */
-  --color-primary-hover: #ffdf2d;
+  --color-primary-hover: #ffe031;
   /* Hover para elementos secundarios */
   --color-secondary-hover: #9e0f94;
   /* Bordes */
@@ -325,8 +325,8 @@ body#contact .nav-contact {
   position: relative;
   overflow: hidden;
   min-height: 520px;
-  margin-top: -120px;
-  z-index: 0;
+  top: -110px;
+  z-index: -2;
   mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
   mask-size: 100% 100%;
@@ -363,19 +363,47 @@ body#contact .nav-contact {
 
 /* Fade Animations - 12s cycle, 2 images */
 @keyframes serv-fade1 {
-  0% { opacity: 1; }
-  41.67% { opacity: 1; }
-  50% { opacity: 0; }
-  91.67% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  41.67% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  91.67% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes serv-fade2 {
-  0% { opacity: 0; }
-  41.67% { opacity: 0; }
-  50% { opacity: 1; }
-  91.67% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+
+  41.67% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  91.67% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Fade Animations - 18s cycle, 3 images */
@@ -706,7 +734,7 @@ body#contact .nav-contact {
 /* Servicios */
 .services-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
 .services-content svg {
@@ -782,8 +810,29 @@ body#contact .nav-contact {
   transition: var(--transition-default);
 }
 
+.phones-foot:hover,
+.phones-link:hover,
 .mails:hover,
 .address:hover {
+  color: var(--color-primary-hover);
+}
+
+.phones-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: var(--transition-default);
+}
+
+.phones-link svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+  transition: var(--transition-default);
+}
+
+.phones-link:hover svg {
   color: var(--color-primary);
 }
 

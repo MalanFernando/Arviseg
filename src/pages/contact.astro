@@ -6,6 +6,27 @@ import Layout from '../layouts/Layout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
 import logo from '../assets/logos/logo-arviseg.png';
 import Map from '../components/Map.astro';
+
+const isMobile = (phone: string) => {
+  const cleaned = phone.replace(/\D/g, '');
+  return cleaned.startsWith('09') || cleaned.startsWith('59');
+};
+
+const formatPhoneForWA = (phone: string) => {
+  const cleaned = phone.replace(/\D/g, '');
+  if (cleaned.startsWith('09')) {
+    return '593' + cleaned.substring(1);
+  }
+  return cleaned;
+};
+
+const formatPhoneForTel = (phone: string) => {
+  return phone.replace(/\D/g, '');
+};
+
+const parsePhones = (phoneString: string) => {
+  return phoneString.split('/').map((p) => p.trim());
+};
 ---
 
 <Layout title="ARVISEG contactos" pageId="contact">
@@ -20,7 +41,7 @@ import Map from '../components/Map.astro';
         Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
       </p>
     </div>
-    <div class="px-2 grid md:grid-flow-row-dense lg:grid-cols-3 gap-12">
+    <div class="px-2 sm:px-0 grid md:grid-flow-row-dense lg:grid-cols-3 gap-12">
       <div class="px-6 sm:px-0 grid gap-4">
         <div>
           <h3 class="fade-up delay-2 h-fit max-w-[220px] text-3xl">
@@ -35,14 +56,7 @@ import Map from '../components/Map.astro';
               Contactos
             </h4>
             <div class="info-contacts">
-              <ul>
-                {
-                  contact.info.phones.map((phone, i) => (
-                    <li class={`fade-up delay-${i + 1} mb-2`}>{phone}</li>
-                  ))
-                }
-              </ul>
-              <ul>
+              <ul class="underline">
                 {
                   contact.info.emails.map((mail, i) => (
                     <li class={`fade-up delay-${i + 1} mb-1`}>
@@ -51,6 +65,62 @@ import Map from '../components/Map.astro';
                       </a>
                     </li>
                   ))
+                }
+              </ul>
+              <ul class="underline mt-2">
+                {
+                  contact.info.phones.map((phone, i) => {
+                    const phoneList = parsePhones(phone);
+                    return phoneList.map((p) => (
+                      <li class={`fade-up delay-${i + 1} mb-2`}>
+                        {isMobile(p) ? (
+                          <a
+                            href={`https://wa.me/${formatPhoneForWA(p)}?text=Hola%20%F0%9F%99%82%20buen%20dia%2C%20me%20gustaria%20recibir%20mas%20informacion.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="phones-link"
+                          >
+                            {p}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
+                        ) : (
+                          <a
+                            href={`tel:${formatPhoneForTel(p)}`}
+                            class="phones-link"
+                          >
+                            {p}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
+                        )}
+                      </li>
+                    ));
+                  })
                 }
               </ul>
             </div>

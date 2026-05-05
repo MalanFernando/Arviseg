@@ -1,12 +1,32 @@
 ---
 import contact from '../data/contact.json';
+
+const isMobile = (phone: string) => {
+  const cleaned = phone.replace(/\D/g, '');
+  return cleaned.startsWith('09') || cleaned.startsWith('59');
+};
+
+const formatPhoneForTel = (phone: string) => {
+  return phone.replace(/\D/g, '');
+};
+
+const formatPhoneForWA = (phone: string) => {
+  const cleaned = phone.replace(/\D/g, '');
+  if (cleaned.startsWith('09')) {
+    return '593' + cleaned.substring(1);
+  }
+  return cleaned;
+};
+
+const parsePhones = (phoneString: string) => {
+  return phoneString.split('/').map((p) => p.trim());
+};
 ---
 
 <div class="flex gap-8">
   <div class="grid gap-4">
     <h4 class="text-primary uppercase font-semibold">Contactos</h4>
-    <ul class="grid gap-2">
-      {contact.info.phones.map((phone) => <li>{phone}</li>)}
+    <ul class="grid gap-2 underline">
       {
         contact.info.emails.map((mail) => (
           <li>
@@ -15,6 +35,57 @@ import contact from '../data/contact.json';
             </a>
           </li>
         ))
+      }
+      {
+        contact.info.phones.map((phone) => {
+          const phoneList = parsePhones(phone);
+          return phoneList.map((p) => (
+            <li class="phones-foot">
+              {isMobile(p) ? (
+                <a
+                  href={`https://wa.me/${formatPhoneForWA(p)}?text=Hola%20%F0%9F%99%82%20buen%20dia%2C%20me%20gustaria%20recibir%20mas%20informacion.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="phones-link"
+                >
+                  {p}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              ) : (
+                <a href={`tel:${formatPhoneForTel(p)}`} class="phones-link">
+                  {p}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              )}
+            </li>
+          ));
+        })
       }
     </ul>
   </div>

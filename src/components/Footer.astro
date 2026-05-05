@@ -35,9 +35,12 @@ const aboutHref = isHomePage ? '#about' : '/#about';
     >
       <div class="grid gap-4 max-w-[280px]">
         <h4 class="text-primary uppercase font-semibold">Direccion</h4>
-        <p>
-          Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
-        </p>
+        <a
+          class="address-link"
+          href="https://www.google.com/maps?cid=15334958517055291717&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYASAA&hl=en&gl=EC&source=embed"
+          target="_blank"
+          >Av. Reina Victoria N13-95 y Colón. Edif. Banco de Guayaquil, Piso PH
+        </a>
       </div>
       <div class="grid gap-4">
         <h4 class="text-primary uppercase font-semibold">Redes</h4>
@@ -47,9 +50,9 @@ const aboutHref = isHomePage ? '#about' : '/#about';
     <div class="fade-up delay-3">
       <ContactsList />
     </div>
-    <div class="fade-up delay-4 grid gap-4">
+    <div class="fade-up delay-4">
       <h4 class="text-primary uppercase font-semibold">Enlaces</h4>
-      <nav class="w-fit grid gap-2">
+      <nav class="w-fit flex flex-col block gap-2 mt-4">
         <a href={homeHref}>Inicio</a>
         <a href={aboutHref}>Nosotros</a>
         <a href="/services/">Servicios</a>
@@ -71,3 +74,25 @@ const aboutHref = isHomePage ? '#about' : '/#about';
     </p>
   </div>
 </footer>
+
+<style>
+  .address-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .address-link .arrow-icon {
+    transition: color 0.3s ease;
+  }
+
+  .address-link:hover {
+    color: #fff59d;
+  }
+
+  .address-link:hover .arrow-icon {
+    color: var(--color-primary);
+  }
+</style>

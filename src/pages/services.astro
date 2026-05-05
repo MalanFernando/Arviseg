@@ -8,11 +8,9 @@ import safeguards from '../assets/images/resguard.jpg';
 import landscape2 from '../assets/images/landscape2.jpg';
 import service from '../assets/images/service.png';
 import cic from '../assets/logo-certificacion/cic-logo.png';
-import ClientsSticker from '../components/ClientsSticker.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ButtonToAction from '../components/ButtonToAction.astro';
 
-type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
 const waNumber = contact.info.whatsapp;
 ---
 
@@ -24,7 +22,7 @@ const waNumber = contact.info.whatsapp;
     </div>
 
     <div
-      class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute z-10"
+      class="grid gap-8 text-center justify-items-center justify-self-center self-center absolute z-0"
     >
       <div>
         <span class="fade-up text-3xl uppercase font-bold">Nuestros</span>
@@ -93,7 +91,7 @@ const waNumber = contact.info.whatsapp;
   <section id="certf" class="relative px-4 sm:px-12 sm:-top-10 md:-top-30">
     <div class="px-12 grid gap-12 justify-items-center">
       <Picture
-        class="fade-up relative sm:left-48 sm:top-25 sm:rotate-8"
+        class="fade-up w-[90px] relative sm:left-47 sm:top-25 sm:rotate-8"
         src={cic}
         formats={['webp', 'png']}
         alt="Certificación CIC - ARVISEG"
@@ -111,7 +109,7 @@ const waNumber = contact.info.whatsapp;
     <div class="flex flex-wrap gap-12 mt-16 justify-center">
       {
         services.certifications.map((certification) => (
-          <div class="bg-primary text-black fade-up delay-3 flex px-6 py-2 text-xl rounded-[90px]">
+          <div class="bg-primary text-black fade-up delay-3 flex px-4 py-[5px] text-xl rounded-[90px]">
             <p>{certification}</p>
           </div>
         ))
@@ -125,12 +123,22 @@ const waNumber = contact.info.whatsapp;
   <div class="modal-backdrop"></div>
   <div class="modal-content bg-primary text-black">
     <button class="modal-close" aria-label="Cerrar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
-    
+
     <div class="modal-header">
       <h3 class="text-2xl font-bold">Solicitar información</h3>
       <p class="modal-service-name text-lg font-semibold text-dark"></p>
@@ -142,7 +150,11 @@ const waNumber = contact.info.whatsapp;
       class="modal-form"
       aria-label="Formulario de solicitud de servicio"
     >
-      <input type="hidden" name="_subject" value="Solicitud de cotización desde servicios" />
+      <input
+        type="hidden"
+        name="_subject"
+        value="Solicitud de cotización desde servicios"
+      />
       <input type="hidden" name="_captcha" value="true" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="servicio" class="service-input" value="" />
@@ -150,19 +162,37 @@ const waNumber = contact.info.whatsapp;
       <div class="form-grid">
         <div class="form-group">
           <label for="modal-nombre">Nombre</label>
-          <input type="text" name="nombre" id="modal-nombre" placeholder="Tu nombre" required />
+          <input
+            type="text"
+            name="nombre"
+            id="modal-nombre"
+            placeholder="Tu nombre"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="modal-telefono">Teléfono</label>
-          <input type="text" name="telefono" id="modal-telefono" placeholder="Tu teléfono" required />
+          <input
+            type="text"
+            name="telefono"
+            id="modal-telefono"
+            placeholder="Tu teléfono"
+            required
+          />
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="modal-correo">Correo</label>
-        <input type="email" name="correo" id="modal-correo" placeholder="Tu correo electrónico" required />
+        <input
+          type="email"
+          name="correo"
+          id="modal-correo"
+          placeholder="Tu correo electrónico"
+          required
+        />
       </div>
-      
+
       <div class="form-group">
         <label for="modal-mensaje">Mensaje</label>
         <textarea name="mensaje" id="modal-mensaje" rows="3"></textarea>
@@ -173,15 +203,23 @@ const waNumber = contact.info.whatsapp;
 
     <div class="modal-footer">
       <span class="divider">o contáctanos por</span>
-      <a 
-        href="#" 
+      <a
+        href="#"
         class="whatsapp-btn-circle modal-wa-btn"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          ></path>
         </svg>
       </a>
     </div>
@@ -308,7 +346,9 @@ const waNumber = contact.info.whatsapp;
     border-bottom: 1px solid #000;
     font-size: 1rem;
     background: transparent;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
     width: 100%;
   }
 
@@ -351,11 +391,13 @@ const waNumber = contact.info.whatsapp;
     justify-content: center;
     width: 48px;
     height: 48px;
-    background: #25D366;
+    background: #25d366;
     color: #fff;
     text-decoration: none;
     border-radius: 50%;
-    transition: background 0.2s, transform 0.2s;
+    transition:
+      background 0.2s,
+      transform 0.2s;
   }
 
   .whatsapp-btn-circle:hover {
@@ -365,14 +407,18 @@ const waNumber = contact.info.whatsapp;
 </style>
 
 <script>
-  const waNumber = "593958996745";
-  
+  const waNumber = '593958996745';
+
   const modal = document.getElementById('service-modal');
   const closeBtn = modal?.querySelector('.modal-close');
   const backdrop = modal?.querySelector('.modal-backdrop');
   const serviceNameEl = modal?.querySelector('.modal-service-name');
-  const serviceInput = modal?.querySelector('.service-input') as HTMLInputElement;
-  const mensajeTextarea = modal?.querySelector('#modal-mensaje') as HTMLTextAreaElement;
+  const serviceInput = modal?.querySelector(
+    '.service-input'
+  ) as HTMLInputElement;
+  const mensajeTextarea = modal?.querySelector(
+    '#modal-mensaje'
+  ) as HTMLTextAreaElement;
   const waBtn = modal?.querySelector('.modal-wa-btn') as HTMLAnchorElement;
 
   function openModal(service: string) {
@@ -381,10 +427,10 @@ const waNumber = contact.info.whatsapp;
       serviceInput.value = service;
       mensajeTextarea.placeholder = `Me interesa el servicio de ${service}. Necesito más información.`;
       waBtn.href = `https://wa.me/${waNumber}?text=Hola%2C+me+interesa+el+servicio+de+${encodeURIComponent(service)}.+Necesito+más+información.`;
-      
+
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      
+
       setTimeout(() => {
         const firstInput = modal.querySelector('input') as HTMLInputElement;
         firstInput?.focus();
@@ -409,7 +455,7 @@ const waNumber = contact.info.whatsapp;
   });
 
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.btn-cotizar').forEach(btn => {
+    document.querySelectorAll('.btn-cotizar').forEach((btn) => {
       btn.addEventListener('click', () => {
         const service = btn.getAttribute('data-service') || '';
         openModal(service);
