@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import services from '../data/services.json';
+import contact from '../data/contact.json';
 import Footer from '../components/Footer.astro';
 import { Picture } from 'astro:assets';
-import resguard from '../assets/images/resguard.jpg';
+import safeguards from '../assets/images/resguard.jpg';
 import landscape2 from '../assets/images/landscape2.jpg';
 import service from '../assets/images/service.png';
 import cic from '../assets/logo-certificacion/cic-logo.png';
@@ -12,6 +13,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import ButtonToAction from '../components/ButtonToAction.astro';
 
 type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
+const waNumber = contact.info.whatsapp;
 ---
 
 <Layout title="ARVISEG servicios" pageId="services">
@@ -69,7 +71,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
     <div class="relative">
       <Picture
         class="fade-up image-6 w-full max-w-[760px] justify-self-center sm:justify-self-start lg:ml-12"
-        src={resguard}
+        src={safeguards}
         formats={['webp', 'jpg']}
         alt="Guardia de seguridad ARVISEG en servicio"
       />
@@ -118,6 +120,303 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
   </section>
   <Footer />
 </Layout>
+
+<div id="service-modal" class="modal-overlay hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content bg-primary text-black">
+    <button class="modal-close" aria-label="Cerrar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <div class="modal-header">
+      <h3 class="text-2xl font-bold">Solicitar información</h3>
+      <p class="modal-service-name text-lg font-semibold text-dark"></p>
+    </div>
+
+    <form
+      action="https://formsubmit.co/asistente@anvi-arviseg.com"
+      method="POST"
+      class="modal-form"
+      aria-label="Formulario de solicitud de servicio"
+    >
+      <input type="hidden" name="_subject" value="Solicitud de cotización desde servicios" />
+      <input type="hidden" name="_captcha" value="true" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="servicio" class="service-input" value="" />
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="modal-nombre">Nombre</label>
+          <input type="text" name="nombre" id="modal-nombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="modal-telefono">Teléfono</label>
+          <input type="text" name="telefono" id="modal-telefono" placeholder="Tu teléfono" required />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="modal-correo">Correo</label>
+        <input type="email" name="correo" id="modal-correo" placeholder="Tu correo electrónico" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="modal-mensaje">Mensaje</label>
+        <textarea name="mensaje" id="modal-mensaje" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar solicitud</button>
+    </form>
+
+    <div class="modal-footer">
+      <span class="divider">o contáctanos por</span>
+      <a 
+        href="#" 
+        class="whatsapp-btn-circle modal-wa-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.hidden {
+    display: none !important;
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  .modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #333;
+    transition: color 0.2s;
+    z-index: 1;
+  }
+
+  .modal-close:hover {
+    color: #000;
+  }
+
+  .modal-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.5rem 0.25rem;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 1rem;
+    background: transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .submit-btn {
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    background: #222;
+  }
+
+  .modal-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .divider {
+    display: block;
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .whatsapp-btn-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .whatsapp-btn-circle:hover {
+    background: #1eb457;
+    transform: scale(1.1);
+  }
+</style>
+
+<script>
+  const waNumber = "593958996745";
+  
+  const modal = document.getElementById('service-modal');
+  const closeBtn = modal?.querySelector('.modal-close');
+  const backdrop = modal?.querySelector('.modal-backdrop');
+  const serviceNameEl = modal?.querySelector('.modal-service-name');
+  const serviceInput = modal?.querySelector('.service-input') as HTMLInputElement;
+  const mensajeTextarea = modal?.querySelector('#modal-mensaje') as HTMLTextAreaElement;
+  const waBtn = modal?.querySelector('.modal-wa-btn') as HTMLAnchorElement;
+
+  function openModal(service: string) {
+    if (modal && serviceNameEl && serviceInput && mensajeTextarea && waBtn) {
+      serviceNameEl.textContent = service;
+      serviceInput.value = service;
+      mensajeTextarea.placeholder = `Me interesa el servicio de ${service}. Necesito más información.`;
+      waBtn.href = `https://wa.me/${waNumber}?text=Hola%2C+me+interesa+el+servicio+de+${encodeURIComponent(service)}.+Necesito+más+información.`;
+      
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      
+      setTimeout(() => {
+        const firstInput = modal.querySelector('input') as HTMLInputElement;
+        firstInput?.focus();
+      }, 100);
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.btn-cotizar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const service = btn.getAttribute('data-service') || '';
+        openModal(service);
+      });
+    });
+  });
+</script>
 
 <script>
   const observer = new IntersectionObserver(
