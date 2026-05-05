@@ -290,8 +290,16 @@ body#contact .nav-contact {
   z-index: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.699), rgba(19, 11, 26, 0.788)), var(--bg-url);
   background-size: cover;
+  background-position: center center;
   background-color: var(--color-background);
   background-blend-mode: luminosity;
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-size: auto 90%;
+    background-position: center center;
+  }
 }
 
 .hero-bg-1 {
@@ -333,8 +341,16 @@ body#contact .nav-contact {
   z-index: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.82), rgba(19, 11, 26, 0.78)), var(--bg-url);
   background-size: cover;
+  background-position: center center;
   background-color: var(--color-background);
   background-blend-mode: luminosity;
+}
+
+@media (max-width: 768px) {
+  .serv-bg {
+    background-size: auto 90%;
+    background-position: center center;
+  }
 }
 
 .serv-bg-1 {
