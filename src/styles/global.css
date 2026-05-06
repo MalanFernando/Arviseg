@@ -73,13 +73,13 @@
   /* Botones, formulario, SVG, textos, cuadro de texto */
   --color-primary: #fcd601;
   /* Iconos SVG */
-  --color-secondary: #b61bad;
+  --color-secondary: #a3269d;
   /* Fondo web */
   --color-background: #180b1a;
   /* Fondo web light */
   --color-background2: #180b1a94;
   /* Figuras */
-  --color-accent: #8a398b;
+  --color-accent: #943496;
   /* Textos y botón */
   --color-dark: #080408;
   /* Textos */
@@ -90,13 +90,13 @@
   --color-cards: #241124;
   --color-cards-smooth: #2713274d;
   /* Lineas */
-  --color-lines: #481c53;
+  --color-lines: #491c55;
 
   /* Adicionales */
   /* Hover para botones primarios */
   --color-primary-hover: #ffe031;
   /* Hover para elementos secundarios */
-  --color-secondary-hover: #9e0f94;
+  --color-secondary-hover: #92128a;
   /* Bordes */
   --color-border: rgba(252, 214, 1, 0.2);
   /* Sombras */
@@ -232,11 +232,11 @@ body#contact .nav-contact {
     content: "";
     display: block;
     position: absolute;
-    width: 380px;
-    height: 380px;
+    width: 280px;
+    height: 280px;
     background-color: var(--color-accent);
-    border-radius: 4px;
-    top: -235px;
+    border-radius: 8px;
+    top: -170px;
     left: 0;
     transform: rotate(30deg);
   }
@@ -250,13 +250,13 @@ body#contact .nav-contact {
 
 @media screen and (min-width: 1020px) {
   .figure::after {
-    left: -80px;
+    left: -48px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .figure::after {
-    left: -100px;
+    left: -54px;
   }
 }
 
@@ -727,7 +727,7 @@ body#contact .nav-contact {
 }
 
 .social-icons:hover .social-svg {
-  color: var(--color-secondary);
+  color: var(--color-accent);
 }
 
 
