@@ -5,13 +5,23 @@ const { service } = Astro.props;
 ---
 
 <div class="cards fade-up p-8 gap-8">
-  <button 
-    class="btn-cotizar" 
+  <button
+    class="btn-cotizar"
     data-service={service.title}
     aria-label="Solicitar cotización"
   >
     Cotizar
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
       <line x1="7" y1="17" x2="17" y2="7"></line>
       <polyline points="7 7 17 7 17 17"></polyline>
     </svg>
@@ -21,7 +31,7 @@ const { service } = Astro.props;
   </div>
   <div class="grid gap-6">
     <h3 class="text-xl font-semibold mt-3">{service.title}</h3>
-    <p class="mt-2 line-clamp-5 text-[15px]">
+    <p class="mt-2 line-clamp-5 text-[15px] font-light">
       {service.description}
     </p>
   </div>
@@ -43,7 +53,10 @@ const { service } = Astro.props;
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease;
     background: var(--color-primary);
     color: #000;
     border: none;

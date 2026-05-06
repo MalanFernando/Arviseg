@@ -75,9 +75,9 @@
   /* Iconos SVG */
   --color-secondary: #a3269d;
   /* Fondo web */
-  --color-background: #180b1a;
+  --color-background: #120914;
   /* Fondo web light */
-  --color-background2: #180b1a94;
+  --color-background2: #13091494;
   /* Figuras */
   --color-accent: #943496;
   /* Textos y botón */
@@ -85,9 +85,9 @@
   /* Textos */
   --color-text: #f5f4f4f6;
   /* Fondo componente MiniBanner  */
-  --color-component: #220e27;
+  --color-component: #1b0f1f;
   /* bg Cards */
-  --color-cards: #241124;
+  --color-cards: #1d0e1d;
   --color-cards-smooth: #2713274d;
   /* Lineas */
   --color-lines: #491c55;
@@ -263,6 +263,10 @@ body#contact .nav-contact {
 @media screen and (min-width: 768px) {
   .icons-color {
     color: var(--color-background);
+  }
+
+  .icons-color .social-svg {
+    width: 22px;
   }
 
   .icons-color a:hover .social-svg {

@@ -37,7 +37,7 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
           home.clients.map((client: string) => (
             <ClientsSticker
               name={client as ClientName}
-              class="filter-carousel max-w-26 object-contain m-4"
+              class="filter-carousel max-w-27 object-contain m-4"
             />
           ))
         }
@@ -46,21 +46,21 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
           home.clients.map((client: string) => (
             <ClientsSticker
               name={client as ClientName}
-              class="filter-carousel max-w-26 object-contain m-4"
+              class="filter-carousel max-w-27 object-contain m-4"
             />
           ))
         }
       </div>
     </div>
   </section>
-  <section id="serv" class="px-4 py-8 grid gap-12 m-auto">
+  <section id="serv" class="px-4 sm:px-8 py-8 grid gap-12 m-auto">
     <h3
       class="fade-up text-xl max-w-40 text-center justify-self-center font-semibold"
     >
       NUESTROS <span class="text-4xl text-color-hover">SERVICIOS</span>
     </h3>
     <div
-      class="max-w-[700px] flex flex-wrap justify-center gap-5 sm:gap-8 md:gap-12 m-auto"
+      class="max-w-[900px] flex flex-wrap justify-center gap-5 sm:gap-8 md:gap-16 m-auto"
     >
       {
         services.list.map((service, i) => {
@@ -169,8 +169,8 @@ type ClientName = Parameters<typeof ClientsSticker>[0]['name'];
         class="fade-up bg-primary text-dark max-w-[400px] sm:max-w-[490px] justify-self-center lg:justify-self-start lg:-left-30 text-center relative bottom-10 px-6 py-4"
       >
         <p class="fade-up">{home.experience.label}</p>
-        <p class="fade-up text-3xl font-semibold">
-          <span class="text-4xl font-bold">+22 </span>{home.experience.years}
+        <p class="fade-up text-2xl font-semibold">
+          +<span class="text-4xl font-bold">22 </span>{home.experience.years}
         </p>
       </div>
     </article>
