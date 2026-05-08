@@ -2,7 +2,7 @@
   "list": [
     {
       "title": "Seguridad Privada",
-      "icon": "shield",
+      "icon": "vip",
       "description": "Custodia y protección de personas, instalaciones y bienes (muebles e inmuebles). Prevención de incidentes: hurtos, robos, asaltos, sabotaje. Modalidades: 24 h, 12 h (día/noche), 8 h (día/noche)"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "title": "Guardaespaldas",
-      "icon": "vip",
+      "icon": "bodyguard",
       "description": "Acompañamiento y protección en traslados y eventos públicos o privados. Personal con técnicas evasivas y protocolos de reacción."
     },
     {
