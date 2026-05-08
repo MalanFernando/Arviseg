@@ -122,6 +122,10 @@ body {
   font-family: var(--font-family);
 }
 
+body * {
+  /* outline: 1px solid #ccc; */
+}
+
 nav>a {
   text-decoration: none;
   transition: var(--transition-default);
