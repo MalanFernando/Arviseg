@@ -333,8 +333,7 @@ body#contact .nav-contact {
   position: relative;
   overflow: hidden;
   min-height: 520px;
-  top: -110px;
-  z-index: -2;
+  top: -64px;
   mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 85%, transparent 100%);
   mask-size: 100% 100%;

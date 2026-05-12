@@ -3,8 +3,15 @@ import ButtonUp from '../components/ButtonUp.astro';
 import Header from '../components/Header.astro';
 import WhatsappButton from '../components/WhatsappButton.astro';
 import '../styles/global.css';
-const { pageId, title = 'Arviseg', description = 'Empresa líder en seguridad privada y monitoreo electrónico en Ecuador' } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://arviseg.com');
+const {
+  pageId,
+  title = 'Arviseg',
+  description = 'Empresa líder en seguridad privada y monitoreo electrónico en Ecuador'
+} = Astro.props;
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || 'https://arviseg.com'
+);
 ---
 
 <!doctype html>
