@@ -1,0 +1,68 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# Redirigir www a non-www (ajusta según tu dominio)
+RewriteCond %{HTTP_HOST} ^www\.arviseg\.com [NC]
+RewriteRule ^(.*)$ https://arviseg.com/$1 [L,R=301]
+
+# Redirigir HTTP a HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Clean URLs: servir index.html para rutas /subdirectorio/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/$ $1/index.html [L]
+
+# Si el archivo .html existe directamente, servirlo
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/.]+)$ $1/index.html [L]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://formsubmit.co; form-action https://formsubmit.co; connect-src 'self'"
+</IfModule>
+
+# Cache Control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # HTML: no cache (siempre servir fresco)
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+
+    # Assets con hash: cache largo
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico|woff2|woff|css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml font/woff2 font/woff
+</IfModule>
+
+# Block access to hidden files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
